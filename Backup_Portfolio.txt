@@ -1,0 +1,73 @@
+Below is all the text that comprised my portfolio...
+
+Luke Schumacher
+I am a Masters student in Artificial Intelligence for Sustainable Societies, based in Tampere, Finalnd. With a history in IT, ML, Data Science as well as Game Design. Currently employed at Siemens Healthineers, working remotely as a product developer.
+
+It included a Work, About and Contact Page
+
+To start with the work page,
+
+Customer Digital Twin - Siemens Healthineers (Ongoing)
+Siemens Healthineers' Customer Digital Twin. This project showcases my proficiency in cutting-edge technology, utilizing a sophisticated Conditional Variational Autoencoder (CVAE) model. The outcome is a personalized digital representation of each customer, transforming the landscape of customer engagement.
+
+Through this innovative approach, I have contributed to revolutionizing how Siemens Healthineers interacts with its customers. The CVAE model captures and comprehends individual preferences, behaviors, and needs, enabling a tailored and responsive experience. This project not only underscores my technical expertise but also demonstrates my commitment to enhancing user experience and satisfaction through advanced solutions.
+
+Explore the future of personalized customer engagement in my portfolio – where precision and innovation converge.
+
+Transformer Model - Siemens Healthineers (2024)
+I developed a transformer-based model for Siemens Healthineers to predict MRI machine sequences for patient exchange. The model uses deep learning techniques like attention mechanisms and tokenization to optimize scheduling by predicting machine usage patterns.
+
+https://github.com/luke-schumacher/Patient-Exchange-ML-TF
+
+In this ongoing project, I developed a transformer-based deep learning model tailored to Siemens Healthineers, aimed at predicting possible sequences of MRI machines for patient exchange. The model leverages a sequence prediction approach, utilizing a custom encoding scheme for MRI machine identifiers and incorporating advanced natural language processing (NLP) techniques such as tokenization, positional encoding, and attention mechanisms.
+The dataset consists of synthetic sequences of MRI machine IDs, with the task being to predict the next machine in the sequence, simulating the order of MRI machine usage for patient appointments. Key steps in the process include:
+Data Generation and Preparation: I generated synthetic sequences of MRI machine IDs with start and end tokens to mark the beginning and conclusion of each sequence. These sequences were encoded using integer mappings.
+Model Design: I built a transformer model with attention layers to capture dependencies between machines in a sequence. The model is trained using custom loss and accuracy functions that account for padding tokens.
+Training and Evaluation: The model’s performance was evaluated based on its ability to predict future machine IDs with high accuracy, enabling efficient scheduling and optimal machine usage.
+This project demonstrates the application of deep learning techniques to optimize operational processes in healthcare, specifically in the context of MRI machine scheduling.
+
+ESG Dashboard Prototype - STANDARD (2024) - Tallinn University
+The ESG Dashboard provides real-time visualizations of Economic, Social, and Governance data, aligning with a furniture company's sustainability goals, using interactive plots and data filters for detailed analysis.
+
+The ESG Dashboard is an interactive tool built with Streamlit that visualizes Economic, Social, and Governance (ESG) data, specifically tailored to a furniture company’s sustainability goals. The dashboard allows users to filter and explore ESG metrics by country and indicator, with data presented in both line and bar charts for easy trend analysis over multiple years. By utilizing Plotly’s visualizations, the dashboard ensures a dynamic and user-friendly experience, offering a comprehensive view of ESG performance. 
+Additionally, the app provides the option to download the filtered data as a JSON file, enabling further analysis. This tool serves as a valuable resource for monitoring and aligning corporate sustainability strategies with key ESG metrics.
+
+Stock Predictions using Machine Learning Models (Transformer and LSTM) - Lusofona University (2025)
+This is a project I did to solidify and improve my capabilities within the scope of machine learning. This was was completed with Junyper Notebook using the Scikit-learn library as well as Matplot lib and Plotly. (include TF libraries and seaborn and many more, link to code as follows)
+https://github.com/luke-schumacher/Stock_Prediction
+
+Dynamic Weather App - 2022 (Hanyang Unviersity)
+The AllWeather app provides real-time weather updates, including temperature, humidity, wind speed, and a dynamic map, using the OpenWeather API and a live clock based on the city's time zone.
+This weather app provides real-time weather updates by fetching data from the OpenWeather API. Built using HTML, CSS, and JavaScript, the app allows users to search for weather information in any city worldwide. It displays key weather details such as temperature, humidity, wind speed, and an icon representing the current weather. Additionally, it integrates a dynamic background image based on the city and embeds an interactive map to locate the area. The app also features a live clock that adjusts based on the selected city's time zone. With a responsive design and intuitive user interface, the app ensures a seamless weather-checking experience.
+
+One Button Game for Jeroen Beersma - 2021 (Hanze University)
+This Puzzle Game was designed for my Client Jeroen Beersma who suffers from Cerebral Palsy, and as such cannot use more than 2 buttons to play Games, as such we designed a game that caters to his needs and anyone else that suffers from similar disabilities.  This showcases some of my core competencies like working in diverse environments.
+
+VR Game for Ski Teacher - Snowlimits (2020) - Hanze University
+This VR game was created for Ski students, that learn how to ski on a Indoor piste. To make it more immersive we created a VR game where you can Ski in the Alps while indoors. The Client is a teacher at Snowlimits, Groningen. This showcases that I am able to adapt to new technologies and succeed.
+
+About Page
+
+Data Scientist, Product Developer, and Tech Innovator
+
+I am a 25-year-old programmer and tech enthusiast with diverse international experience. Originally from Germany, I am currently based in Tallinn. Prior to this, I lived in South Korea as an exchange student, spent three years in the Netherlands, and spent a decade in the UAE. With experience across Europe, the Middle East, and Asia, I am open to job opportunities in any of these regions.
+Fluent in English and German (C2), with intermediate proficiency in Arabic and French (B2), I bring a global perspective to my work and communication. I hold a bachelor’s degree in Game Design, IT, Data Science, and Machine Learning, and I am currently pursuing a master’s in Artificial Intelligence for Sustainable Societies.
+As a highly goal-oriented individual, I thrive in dynamic and multicultural environments, collaborating with others to identify and seize opportunities. My core competencies include:
+Adaptability to evolving environments
+Continuous learning and embracing new challenges
+Strong interpersonal skills
+Attention to detail
+Effective communication
+Analytical mindset and data-driven decision-making
+A drive to succeed and achieve
+I am deeply passionate about emerging technologies such as Artificial Intelligence, Machine Learning, Virtual Reality, and Robotics. I look forward to leveraging my skills in the tech sector and expanding my expertise in these exciting fields.
+
+Contact Page
+
+Name
+
+Email
+
+Message
+
+Submit button

@@ -2,6 +2,7 @@
 
 ## General Info
 - **Name:** Luke Schumacher  
+- **Links:** GitHub:https://github.com/luke-schumacher LinkedIn:https://www.linkedin.com/in/luke-schumacher-611468130/ 
 - **Tagline/Role:** Data Scientist • Product Developer • AI Innovator  
 - **Short Bio (Landing Page Intro):**  
   Master’s student in Artificial Intelligence for Sustainable Societies, based in Tampere, Finland. Experienced in IT, Machine Learning, Data Science, and Game Design. Currently working remotely as a Product Developer at Siemens Healthineers.  
@@ -19,6 +20,7 @@ I’m Luke Schumacher — a Data Scientist and Product Developer with expertise 
 **Call-to-Action Buttons (below text):**  
 - [View My Work] → links to Work page  
 - [Get in Touch] → links to Contact page  
+- [Download CV] → links to a hosted PDF of resume  
 
 ---
 
@@ -99,7 +101,7 @@ I am a 25-year-old programmer and technology enthusiast with diverse internation
 
 - **Languages:**  
   - English & German: Fluent (C2)  
-  - Arabic: Intermediate (B2)  
+  - Arabic & French: Intermediate (B2)  
 
 - **Core Competencies:**  
   - Adaptability in multicultural environments  
@@ -111,9 +113,34 @@ I am a 25-year-old programmer and technology enthusiast with diverse internation
 - **Passions:**  
   Artificial Intelligence, Machine Learning, Virtual Reality, Robotics, and their applications in **sustainability and healthcare innovation**.  
 
+**Download Option:**  
+[Download CV] → links to a hosted PDF version of my resume.  
+
 ---
 
-### 3. Contact Page
+### 3. Skills / Tech Stack
+
+**Programming Languages & Tools:**  
+- Python (TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy, Matplotlib, Seaborn, Plotly)  
+- JavaScript, HTML5, CSS3  
+- C# (Unity Game Development)  
+- SQL & NoSQL Databases  
+
+**Frameworks & Platforms:**  
+- Transformers (Hugging Face)  
+- Streamlit & Flask  
+- Git & GitHub  
+- Docker & Cloud Deployment (AWS, GCP basics)  
+
+**Specialized Skills:**  
+- Machine Learning (LSTMs, Transformers, Autoencoders, Time-Series Forecasting)  
+- Data Science & Analytics (Data Visualization, Statistical Modeling, Feature Engineering)  
+- Game Design & Development (Unity, VR/AR)  
+- Sustainable Tech & AI for Healthcare  
+
+---
+
+### 4. Contact Page
 
 Form fields:  
 - **Name** (text input)  
@@ -127,7 +154,7 @@ Form fields:
 - **Layout:** Clean, professional, modern portfolio style.  
 - **Design:** Minimalist with whitespace; emphasize project images/screenshots (where available).  
 - **Color Palette:** Professional neutrals (white/gray/black) with one accent color (blue or green).  
-- **Navigation:** Simple navbar (Home • Work • About • Contact).  
+- **Navigation:** Simple navbar (Home • Work • About • Skills • Contact).  
 - **Typography:** Clear, modern sans-serif fonts (e.g., Inter, Roboto, Open Sans).  
 - **Responsiveness:** Fully optimized for desktop, tablet, and mobile.  
 - **Work Page Layout:** Use project cards with:  
@@ -136,4 +163,6 @@ Form fields:
   - Short description  
   - Expandable section or separate page with details + GitHub links.  
 - **Contact Page:** Use a functional contact form (can be hooked to email service or backend later).  
-- **About Page:** Use structured sections (bio, education, languages, competencies, passions).  
+- **About Page:** Use structured sections (bio, education, languages, competencies, passions, CV download).  
+- **Skills Page:** Present as a clean grid or list with icons for each language, framework, and tool.  
+- **CV Download:** Prominently available in Hero Section + About Page.  

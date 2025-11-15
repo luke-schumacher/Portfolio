@@ -3,30 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luke Schumacher | Data Scientist & Product Developer</title>
+    <title>Luke Schumacher | AI Innovator & Data Scientist</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22grad%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%23667eea%22/><stop offset=%22100%25%22 style=%22stop-color:%23764ba2%22/></linearGradient></defs><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22url(%23grad)%22/><text x=%2250%22 y=%2250%22 font-family=%22Arial,sans-serif%22 font-size=%2245%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>LS</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Main font and theme configuration */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
-            color: #0f172a; /* slate-900 */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
         }
-        /* Custom accent color */
-        :root {
-            --accent-color: #2563eb; /* blue-600 */
+
+        /* Animated gradient background for hero */
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
         }
-        .accent-text { color: var(--accent-color); }
-        .accent-bg { background-color: var(--accent-color); }
-        .accent-border { border-color: var(--accent-color); }
-        
-        /* Smooth transition for section visibility */
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Smooth transitions */
         .page-section {
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
         }
+
         .page-section.hidden {
             opacity: 0;
             transform: translateY(20px);
@@ -34,296 +51,682 @@
             position: absolute;
         }
 
-        /* Active navigation link style */
+        /* Project card hover effects */
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card img {
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Active nav link */
         .nav-link.active {
-            color: var(--accent-color);
+            color: #667eea;
             font-weight: 600;
         }
-        .nav-link.active::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: var(--accent-color);
-            margin-top: 2px;
+
+        /* Skill badge hover effect */
+        .skill-badge {
+            transition: all 0.2s ease;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Profile image styling */
+        .profile-image {
+            border: 4px solid white;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Award badge */
+        .award-badge {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Loading animation for images */
+        .project-image {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .project-image img {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-image img.loaded {
+            opacity: 1;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header and Navigation -->
-    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+    <!-- Header -->
+    <header id="header" class="glass sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-xl font-bold text-slate-800 page-switcher">Luke Schumacher</a>
+            <a href="#home" class="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent page-switcher">Luke Schumacher</a>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#work" class="nav-link text-slate-600 hover:text-blue-600 page-switcher">Work</a>
-                <a href="#about" class="nav-link text-slate-600 hover:text-blue-600 page-switcher">About</a>
-                <a href="#skills" class="nav-link text-slate-600 hover:text-blue-600 page-switcher">Skills</a>
-                <a href="#contact" class="nav-link text-slate-600 hover:text-blue-600 page-switcher">Contact</a>
+                <a href="#work" class="nav-link text-gray-700 hover:text-purple-600 transition-colors page-switcher">Work</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-purple-600 transition-colors page-switcher">About</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-purple-600 transition-colors page-switcher">Skills</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 transition-colors page-switcher">Contact</a>
             </div>
-             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </nav>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
-            <a href="#work" class="block nav-link text-slate-600 hover:text-blue-600 page-switcher">Work</a>
-            <a href="#about" class="block nav-link text-slate-600 hover:text-blue-600 page-switcher">About</a>
-            <a href="#skills" class="block nav-link text-slate-600 hover:text-blue-600 page-switcher">Skills</a>
-            <a href="#contact" class="block nav-link text-slate-600 hover:text-blue-600 page-switcher">Contact</a>
+            <a href="#work" class="block nav-link text-gray-700 hover:text-purple-600 page-switcher">Work</a>
+            <a href="#about" class="block nav-link text-gray-700 hover:text-purple-600 page-switcher">About</a>
+            <a href="#skills" class="block nav-link text-gray-700 hover:text-purple-600 page-switcher">Skills</a>
+            <a href="#contact" class="block nav-link text-gray-700 hover:text-purple-600 page-switcher">Contact</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 md:py-20 relative">
-        <!-- Home/Landing Page Section -->
-        <section id="home" class="page-section min-h-[70vh] flex flex-col justify-center">
-            <div class="max-w-3xl">
-                <span class="font-semibold accent-text">Luke Schumacher • Data Scientist • Product Developer • AI Innovator</span>
-                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mt-4 mb-6 leading-tight">Building Intelligent Solutions for a Sustainable Future</h1>
-                <p class="text-lg text-slate-600 mb-8">
-                    I'm Luke Schumacher — a Data Scientist and Product Developer with expertise in <strong class="text-slate-800">AI, machine learning, and sustainable innovation</strong>. Explore my portfolio to see how I combine technology, creativity, and real-world problem solving.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#work" class="page-switcher bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">View My Work</a>
-                    <a href="#contact" class="page-switcher bg-slate-200 text-slate-800 font-semibold py-3 px-6 rounded-lg hover:bg-slate-300 transition-colors">Get in Touch</a>
-                    <a href="CV_Luke_Schumacher.pdf" target="_blank" class="bg-transparent border-2 border-slate-300 text-slate-800 font-semibold py-3 px-6 rounded-lg hover:bg-slate-100 transition-colors">Download CV</a>
+    <main class="relative">
+        <!-- Hero Section -->
+        <section id="home" class="page-section hero-gradient min-h-screen flex items-center relative">
+            <div class="container mx-auto px-6 py-20 relative z-10">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="flex-1 text-white">
+                        <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                            <span class="text-sm font-semibold">AI Innovator • Data Scientist • Product Developer</span>
+                        </div>
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                            Building the Future with
+                            <span class="block bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent pb-2">Artificial Intelligence</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
+                            Award-winning AI researcher and developer specializing in <strong>machine learning, healthcare AI, and sustainable technology</strong>. From Siemens Healthineers to civic engagement platforms, I create intelligent solutions that matter.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#work" class="page-switcher bg-white text-purple-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">Explore My Work</a>
+                            <a href="#contact" class="page-switcher bg-purple-800/50 backdrop-blur-sm text-white font-bold py-4 px-8 rounded-lg hover:bg-purple-800/70 transition-all border-2 border-white/30">Let's Connect</a>
+                            <a href="CV_Luke_Schumacher.pdf" target="_blank" class="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white/10 transition-all">Download CV</a>
+                        </div>
+                        <div class="mt-12 flex gap-6">
+                            <a href="https://github.com/luke-schumacher" target="_blank" class="text-white hover:text-yellow-200 transition-colors">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/luke-schumacher-611468130/" target="_blank" class="text-white hover:text-yellow-200 transition-colors">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <img src="assests/Images/profile picture_round.png" alt="Luke Schumacher" class="profile-image rounded-full w-64 h-64 md:w-80 md:h-80 object-cover">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Work/Projects Section -->
-        <section id="work" class="page-section hidden">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">My Work</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Cards -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6">
-                        <span class="text-sm text-slate-500">Siemens Healthineers (Ongoing)</span>
-                        <h3 class="text-xl font-bold mb-2 mt-1">Customer Digital Twin</h3>
-                        <p class="text-slate-600 text-base">Leveraging Conditional Variational Autoencoders (CVAE) to create digital twins of customers for personalized engagement.</p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Machine Learning</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">CVAE</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Applied AI</span>
-                        </div>
-                    </div>
+        <!-- Work Section -->
+        <section id="work" class="page-section hidden bg-gray-50">
+            <div class="container mx-auto px-6 py-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Featured Projects</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">From award-winning applications to cutting-edge AI research with industry leaders</p>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6">
-                        <span class="text-sm text-slate-500">Siemens Healthineers (2024)</span>
-                        <h3 class="text-xl font-bold mb-2 mt-1">Transformer Model for MRI Scheduling</h3>
-                        <p class="text-slate-600 text-base">A transformer-based deep learning model to predict MRI machine usage sequences, optimizing healthcare operations.</p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                             <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Deep Learning</span>
-                             <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Transformers</span>
-                        </div>
-                         <a href="https://github.com/luke-schumacher/Patient-Exchange-ML-TF" target="_blank" class="text-blue-600 hover:underline mt-4 inline-block">View on GitHub &rarr;</a>
-                    </div>
-                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6">
-                        <span class="text-sm text-slate-500">Tallinn University (2024)</span>
-                        <h3 class="text-xl font-bold mb-2 mt-1">ESG Dashboard Prototype</h3>
-                        <p class="text-slate-600 text-base">Interactive Streamlit dashboard to visualize ESG data, helping align corporate sustainability strategies.</p>
-                         <div class="mt-4 flex flex-wrap gap-2">
-                             <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Streamlit</span>
-                             <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Plotly</span>
-                             <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Data Viz</span>
+                    <!-- ESG Dashboard - AWARD WINNER -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gray-200 overflow-hidden relative">
+                            <img src="assests/Images/Standard ESG Dash 1.png" alt="ESG Dashboard" class="w-full h-full object-cover" onload="this.classList.add('loaded')">
+                            <div class="award-badge absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                AWARD WINNER
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-purple-600 font-semibold">Tallinn University • 2024</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">ESG Reporting Dashboard</h3>
+                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-3 mb-3">
+                                <p class="text-sm font-semibold text-yellow-800">Finastra Hack to the Future 2020: Best Environmental Impact & Best UX</p>
+                            </div>
+                            <p class="text-gray-600 mb-4">Interactive Streamlit dashboard leveraging GDelt news sources for automatic, data-driven ESG scoring with real-time sentiment analysis and company relationship mapping using Node2Vec graph embeddings.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Streamlit</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">NetworkX</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">NLP</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Data Viz</span>
+                            </div>
+                            <a href="https://share.streamlit.io/hannahawalsh/esg_ai/main/app.py" target="_blank" class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold">
+                                View Live Demo
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
                         </div>
                     </div>
-                </div>
 
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6">
-                        <span class="text-sm text-slate-500">Lusófona University (2025)</span>
-                        <h3 class="text-xl font-bold mb-2 mt-1">Stock Prediction Models</h3>
-                        <p class="text-slate-600 text-base">Developed LSTM and Transformer models for stock price prediction to strengthen time-series forecasting skills.</p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                             <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">LSTM</span>
-                             <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
+                    <!-- Customer Digital Twin -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gray-200 overflow-hidden">
+                            <img src="assests/Images/DT_1.png" alt="Digital Twin" class="w-full h-full object-cover" onload="this.classList.add('loaded')">
                         </div>
-                        <a href="https://github.com/luke-schumacher/Stock_Prediction" target="_blank" class="text-blue-600 hover:underline mt-4 inline-block">View on GitHub &rarr;</a>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-blue-600 font-semibold">Siemens Healthineers • Ongoing</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Customer Digital Twin</h3>
+                            <p class="text-gray-600 mb-4">Advanced CVAE (Conditional Variational Autoencoder) implementation creating digital twins of customers for personalized engagement strategies in healthcare technology.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Deep Learning</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">CVAE</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Python</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Healthcare AI</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6">
-                        <span class="text-sm text-slate-500">Hanyang University (2022)</span>
-                        <h3 class="text-xl font-bold mb-2 mt-1">Dynamic Weather App</h3>
-                        <p class="text-slate-600 text-base">A real-time weather app using HTML, CSS, JavaScript and the OpenWeather API with a dynamic UI.</p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                             <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">JavaScript</span>
-                             <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">API</span>
+                    <!-- Transformer MRI Scheduling -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gray-200 overflow-hidden">
+                            <img src="assests/Images/Transformer_model_cover.png" alt="Transformer Model" class="w-full h-full object-cover" onload="this.classList.add('loaded')">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-blue-600 font-semibold">Siemens Healthineers • 2024</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">MRI Scheduling AI</h3>
+                            <p class="text-gray-600 mb-4">Production-ready Transformer model predicting MRI machine usage sequences to optimize healthcare operations and resource allocation.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Transformers</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">TensorFlow</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Healthcare</span>
+                            </div>
+                            <a href="https://github.com/luke-schumacher/Patient-Exchange-ML-TF" target="_blank" class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold">
+                                View on GitHub
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
                         </div>
                     </div>
-                </div>
 
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6">
-                        <span class="text-sm text-slate-500">Hanze University (2021)</span>
-                        <h3 class="text-xl font-bold mb-2 mt-1">One Button Puzzle Game</h3>
-                        <p class="text-slate-600 text-base">Accessible puzzle game designed for a client with cerebral palsy, playable with only two buttons.</p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                             <span class="bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Game Design</span>
-                             <span class="bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Accessibility</span>
+                    <!-- Civic AI Debator -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                            <div class="text-white text-center p-6">
+                                <svg class="w-20 h-20 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                <p class="font-bold text-lg">AI-Powered Civic Debate</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-indigo-600 font-semibold">Research Platform • 2024</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Civic AI Debator</h3>
+                            <p class="text-gray-600 mb-4">Research platform using dual-LLM debate system to reduce algorithmic bias in civic engagement. Presents balanced perspectives through AI agent debates rather than single chatbot responses.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">LLMs</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Civic Tech</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Research</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Groq SDK</span>
+                            </div>
+                            <a href="https://civic-ai-debate.netlify.app/" target="_blank" class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold">
+                                View Live Demo
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
                         </div>
                     </div>
-                </div>
-                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6">
-                        <span class="text-sm text-slate-500">Hanze University (2020)</span>
-                        <h3 class="text-xl font-bold mb-2 mt-1">VR Ski Training Game</h3>
-                        <p class="text-slate-600 text-base">A VR skiing simulation designed for indoor ski students to complement physical training with an immersive experience.</p>
-                         <div class="mt-4 flex flex-wrap gap-2">
-                             <span class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">VR</span>
-                             <span class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Unity</span>
+
+                    <!-- AI Behavior Lab -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                            <div class="text-white text-center p-6">
+                                <svg class="w-20 h-20 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                                <p class="font-bold text-lg">Interactive AI Education</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-green-600 font-semibold">Educational Platform • Ongoing</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">AI Behavior Lab</h3>
+                            <p class="text-gray-600 mb-4">Interactive learning game helping users understand AI model behaviors by revealing hidden system prompts. Features character-based narrative and multiple educational levels.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">AI Education</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Game Design</span>
+                            </div>
+                            <a href="https://technejad.github.io/chatbot_demo/" target="_blank" class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold">
+                                View Live Demo
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
                         </div>
                     </div>
+
+                    <!-- Stock Prediction -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gray-200 overflow-hidden">
+                            <img src="assests/Images/DT_5.png" alt="Time Series Models" class="w-full h-full object-cover" onload="this.classList.add('loaded')">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-blue-600 font-semibold">Academic Research • 2025</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Stock Prediction Models</h3>
+                            <p class="text-gray-600 mb-4">Advanced time-series forecasting using LSTM and Transformer architectures with multi-input branches and attention mechanisms for financial market prediction.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">LSTM</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Time Series</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">TensorFlow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Civic AI Negotiator -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                            <div class="text-white text-center p-6">
+                                <svg class="w-20 h-20 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                                <p class="font-bold text-lg">AI-Assisted Negotiation</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-purple-600 font-semibold">Research Platform • 2024</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Civic AI Negotiator</h3>
+                            <p class="text-gray-600 mb-4">AI-assisted negotiation platform for policy decision-making, enabling interactive dialogue for complex civic challenges with balanced AI facilitation.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">LLMs</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Policy Tech</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Research</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather App -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gray-200 overflow-hidden">
+                            <img src="assests/Images/Weather_1.png" alt="Weather App" class="w-full h-full object-cover" onload="this.classList.add('loaded')">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-yellow-600 font-semibold">Hanyang University • 2022</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Dynamic Weather App</h3>
+                            <p class="text-gray-600 mb-4">Real-time weather application featuring location-based search, dynamic backgrounds, Google Maps integration, and clean responsive design using vanilla JavaScript.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">API Integration</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Web Dev</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VR Ski Training -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gray-200 overflow-hidden">
+                            <img src="assests/Images/VR2_StartofPiste.png" alt="VR Ski Training" class="w-full h-full object-cover" onload="this.classList.add('loaded')">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-red-600 font-semibold">Hanze University • 2020</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">VR Ski Training Game</h3>
+                            <p class="text-gray-600 mb-4">Immersive VR skiing simulation for indoor ski students, complementing physical training with realistic mountain environments and interactive challenges.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">VR/AR</span>
+                                <span class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">Unity</span>
+                                <span class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">Game Design</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- One Button Puzzle Game -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="project-image h-48 bg-gray-200 overflow-hidden">
+                            <img src="assests/Images/Level_design.png" alt="Accessible Game Design" class="w-full h-full object-cover" onload="this.classList.add('loaded')">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-purple-600 font-semibold">Hanze University • 2021</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Accessible Puzzle Game</h3>
+                            <p class="text-gray-600 mb-4">Thoughtfully designed puzzle game for a client with cerebral palsy, playable with only two buttons. Demonstrates commitment to inclusive design and accessibility.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Accessibility</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Game Design</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Inclusive Tech</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="page-section hidden">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">About Me</h2>
-                <p class="text-xl text-center text-slate-600 mb-12">Data Scientist, Product Developer, and Tech Innovator</p>
-                
-                <div class="text-lg text-slate-700 space-y-4 mb-12">
-                   <p>
-                        I am a 25-year-old programmer and technology enthusiast with diverse international experience. Currently based in <strong>Tampere, Finland</strong>, I bring global exposure from living in <strong>Germany, South Korea, the Netherlands, the UAE, and Estonia</strong>.
-                    </p>
-                </div>
+        <section id="about" class="page-section hidden bg-white">
+            <div class="container mx-auto px-6 py-20">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">About Me</h2>
+                        <p class="text-xl text-gray-600">AI Innovator • Data Scientist • Global Citizen</p>
+                    </div>
 
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-4">Education & Languages</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"></path></svg>
-                                <div><strong class="font-semibold">Master’s:</strong> Artificial Intelligence for Sustainable Societies (ongoing)</div>
-                            </li>
-                            <li class="flex items-start">
-                                 <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div><strong class="font-semibold">Bachelor’s:</strong> Game Design, IT, Data Science, and Machine Learning</div>
-                            </li>
-                            <li class="flex items-start">
-                               <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h-3.234"></path></svg>
-                                <div><strong class="font-semibold">Languages:</strong> English & German (Fluent), Arabic & French (Intermediate)</div>
-                            </li>
-                        </ul>
+                    <div class="flex flex-col md:flex-row gap-12 items-center mb-12">
+                        <div class="flex-shrink-0">
+                            <img src="assests/Images/profile picture_square.jpg" alt="Luke Schumacher" class="profile-image rounded-2xl w-64 h-64 object-cover">
+                        </div>
+                        <div class="flex-1 text-lg text-gray-700 space-y-4">
+                            <p class="leading-relaxed">
+                                I'm a <strong class="text-purple-600">25-year-old AI researcher and product developer</strong> passionate about creating intelligent solutions that drive positive change. Currently based in <strong>Tampere, Finland</strong>, my journey has taken me across the globe — from Germany and South Korea to the Netherlands, UAE, and Estonia — enriching my perspective on technology's role in society.
+                            </p>
+                            <p class="leading-relaxed">
+                                My work spans <strong class="text-blue-600">award-winning applications</strong> to <strong class="text-blue-600">corporate AI systems</strong> with Siemens Healthineers, focusing on healthcare optimization, sustainable technology, and civic engagement platforms. I believe AI should be accessible, ethical, and beneficial for all.
+                            </p>
+                            <p class="leading-relaxed">
+                                Whether developing transformer models for medical scheduling, creating civic debate platforms, or designing accessible games, I approach each project with the same commitment: <strong class="text-purple-600">build technology that matters</strong>.
+                            </p>
+                        </div>
                     </div>
-                     <div>
-                        <h3 class="text-2xl font-bold mb-4">Core Competencies</h3>
-                        <ul class="space-y-2 text-slate-600">
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Adaptability in multicultural environments</li>
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Continuous learning & growth mindset</li>
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Data-driven decision-making</li>
-                           <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Results-oriented execution</li>
-                        </ul>
+
+                    <div class="grid md:grid-cols-2 gap-10 mb-12">
+                        <div class="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                Education & Languages
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-6 h-6 text-purple-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <div>
+                                        <strong class="font-semibold text-gray-900">Master's Degree (Ongoing)</strong>
+                                        <p class="text-gray-600">Artificial Intelligence for Sustainable Societies</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-6 h-6 text-purple-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <div>
+                                        <strong class="font-semibold text-gray-900">Bachelor's Degree</strong>
+                                        <p class="text-gray-600">Game Design, IT, Data Science & Machine Learning</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-6 h-6 text-purple-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <div>
+                                        <strong class="font-semibold text-gray-900">Languages</strong>
+                                        <p class="text-gray-600">English & German (Fluent), Arabic & French (Intermediate)</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                                Core Competencies
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span class="text-gray-700">Adaptability in multicultural environments</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span class="text-gray-700">Continuous learning & growth mindset</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span class="text-gray-700">Data-driven decision-making</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span class="text-gray-700">Results-oriented execution</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span class="text-gray-700">Ethical AI development</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span class="text-gray-700">Cross-functional collaboration</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                 <div class="mt-12 text-center">
-                    <a href="CV_Luke_Schumacher.pdf" target="_blank" class="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors">Download CV</a>
+
+                    <div class="text-center">
+                        <a href="CV_Luke_Schumacher.pdf" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Download Full CV
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="page-section hidden">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Tech Stack</h2>
-            <div class="max-w-4xl mx-auto space-y-8">
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-slate-800">Programming Languages & Tools</h3>
-                    <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge">Python</span><span class="skill-badge">JavaScript</span>
-                        <span class="skill-badge">HTML5</span><span class="skill-badge">CSS3</span>
-                        <span class="skill-badge">C#</span><span class="skill-badge">SQL</span>
-                        <span class="skill-badge">NoSQL</span><span class="skill-badge">TensorFlow</span>
-                        <span class="skill-badge">PyTorch</span><span class="skill-badge">Scikit-learn</span>
-                        <span class="skill-badge">Pandas</span><span class="skill-badge">NumPy</span>
-                        <span class="skill-badge">Matplotlib</span><span class="skill-badge">Seaborn</span>
-                        <span class="skill-badge">Plotly</span>
-                    </div>
+        <section id="skills" class="page-section hidden bg-gray-50">
+            <div class="container mx-auto px-6 py-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Technical Expertise</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">A comprehensive toolkit for building intelligent, scalable solutions</p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-slate-800">Frameworks & Platforms</h3>
-                    <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge">Transformers (Hugging Face)</span>
-                        <span class="skill-badge">Streamlit</span><span class="skill-badge">Flask</span>
-                        <span class="skill-badge">Git & GitHub</span><span class="skill-badge">Docker</span>
-                        <span class="skill-badge">AWS</span><span class="skill-badge">GCP</span>
+
+                <div class="max-w-5xl mx-auto space-y-10">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            <h3 class="text-2xl font-bold text-gray-900">Programming & Core Technologies</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-badge bg-blue-100 text-blue-800">Python</span>
+                            <span class="skill-badge bg-blue-100 text-blue-800">JavaScript</span>
+                            <span class="skill-badge bg-blue-100 text-blue-800">HTML5 & CSS3</span>
+                            <span class="skill-badge bg-blue-100 text-blue-800">C#</span>
+                            <span class="skill-badge bg-blue-100 text-blue-800">SQL</span>
+                            <span class="skill-badge bg-blue-100 text-blue-800">NoSQL</span>
+                            <span class="skill-badge bg-blue-100 text-blue-800">Git & GitHub</span>
+                            <span class="skill-badge bg-blue-100 text-blue-800">Docker</span>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-4 text-slate-800">Specialized Skills</h3>
-                    <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge">Machine Learning</span><span class="skill-badge">Data Science & Analytics</span>
-                        <span class="skill-badge">Game Design & Development</span><span class="skill-badge">Sustainable Tech</span>
-                        <span class="skill-badge">AI for Healthcare</span><span class="skill-badge">Time-Series Forecasting</span>
-                        <span class="skill-badge">VR/AR</span>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                            <h3 class="text-2xl font-bold text-gray-900">Machine Learning & AI</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-badge bg-purple-100 text-purple-800">TensorFlow</span>
+                            <span class="skill-badge bg-purple-100 text-purple-800">PyTorch</span>
+                            <span class="skill-badge bg-purple-100 text-purple-800">Transformers (Hugging Face)</span>
+                            <span class="skill-badge bg-purple-100 text-purple-800">Scikit-learn</span>
+                            <span class="skill-badge bg-purple-100 text-purple-800">LSTM & RNNs</span>
+                            <span class="skill-badge bg-purple-100 text-purple-800">CNNs</span>
+                            <span class="skill-badge bg-purple-100 text-purple-800">VAE & CVAE</span>
+                            <span class="skill-badge bg-purple-100 text-purple-800">LLMs & NLP</span>
+                            <span class="skill-badge bg-purple-100 text-purple-800">Groq SDK</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            <h3 class="text-2xl font-bold text-gray-900">Data Science & Analytics</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-badge bg-green-100 text-green-800">Pandas</span>
+                            <span class="skill-badge bg-green-100 text-green-800">NumPy</span>
+                            <span class="skill-badge bg-green-100 text-green-800">Matplotlib</span>
+                            <span class="skill-badge bg-green-100 text-green-800">Seaborn</span>
+                            <span class="skill-badge bg-green-100 text-green-800">Plotly</span>
+                            <span class="skill-badge bg-green-100 text-green-800">Streamlit</span>
+                            <span class="skill-badge bg-green-100 text-green-800">NetworkX</span>
+                            <span class="skill-badge bg-green-100 text-green-800">Time-Series Analysis</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                            <h3 class="text-2xl font-bold text-gray-900">Web & Cloud Platforms</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-badge bg-orange-100 text-orange-800">React.js</span>
+                            <span class="skill-badge bg-orange-100 text-orange-800">Node.js</span>
+                            <span class="skill-badge bg-orange-100 text-orange-800">Flask</span>
+                            <span class="skill-badge bg-orange-100 text-orange-800">AWS</span>
+                            <span class="skill-badge bg-orange-100 text-orange-800">GCP</span>
+                            <span class="skill-badge bg-orange-100 text-orange-800">Netlify</span>
+                            <span class="skill-badge bg-orange-100 text-orange-800">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <h3 class="text-2xl font-bold text-gray-900">Specialized Skills</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-badge bg-red-100 text-red-800">Healthcare AI</span>
+                            <span class="skill-badge bg-red-100 text-red-800">Sustainable Technology</span>
+                            <span class="skill-badge bg-red-100 text-red-800">Civic Engagement AI</span>
+                            <span class="skill-badge bg-red-100 text-red-800">Time-Series Forecasting</span>
+                            <span class="skill-badge bg-red-100 text-red-800">VR/AR Development</span>
+                            <span class="skill-badge bg-red-100 text-red-800">Accessible Game Design</span>
+                            <span class="skill-badge bg-red-100 text-red-800">Unity 3D</span>
+                            <span class="skill-badge bg-red-100 text-red-800">ESG Analytics</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <style>.skill-badge { display: inline-block; background-color: #e2e8f0; color: #1e293b; padding: 6px 14px; border-radius: 9999px; font-weight: 500; font-size: 0.875rem; }</style>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="page-section hidden">
-             <div class="max-w-xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
-                <p class="text-lg text-slate-600 mb-8">Have a question or want to work together? Let's connect.</p>
+        <section id="contact" class="page-section hidden bg-white">
+            <div class="container mx-auto px-6 py-20">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Let's Build Something Amazing</h2>
+                        <p class="text-xl text-gray-600">Have a project idea? Looking for collaboration? Let's connect.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 mb-12">
+                        <div class="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                Get in Touch
+                            </h3>
+                            <p class="text-gray-700 mb-6">I'm always excited to discuss new projects, innovative ideas, or opportunities to be part of your vision.</p>
+                            <div class="space-y-4">
+                                <a href="https://github.com/luke-schumacher" target="_blank" class="flex items-center gap-3 text-gray-700 hover:text-purple-600 transition-colors">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                                    <span class="font-semibold">GitHub: luke-schumacher</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/luke-schumacher-611468130/" target="_blank" class="flex items-center gap-3 text-gray-700 hover:text-purple-600 transition-colors">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    <span class="font-semibold">LinkedIn Profile</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <form class="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-100">
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md">
-                <div class="mb-6">
-                    <label for="name" class="block text-slate-700 font-semibold mb-2">Name</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
-                </div>
-                <div class="mb-6">
-                    <label for="email" class="block text-slate-700 font-semibold mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
-                </div>
-                <div class="mb-6">
-                    <label for="message" class="block text-slate-700 font-semibold mb-2">Message</label>
-                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">Send Message</button>
-                </div>
-            </form>
         </section>
     </main>
-    
+
     <!-- Footer -->
-    <footer class="bg-slate-100 border-t border-slate-200">
-        <div class="container mx-auto px-6 py-8 text-center text-slate-600">
-             <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://github.com/luke-schumacher" target="_blank" class="text-slate-500 hover:text-blue-600">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/luke-schumacher-611468130/" target="_blank" class="text-slate-500 hover:text-blue-600">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Luke Schumacher</h3>
+                    <p class="text-gray-400">AI Innovator & Data Scientist building intelligent solutions for a sustainable future.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#work" class="text-gray-400 hover:text-purple-400 transition-colors page-switcher">My Work</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-purple-400 transition-colors page-switcher">About Me</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-purple-400 transition-colors page-switcher">Skills</a></li>
+                        <li><a href="CV_Luke_Schumacher.pdf" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors">Download CV</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/luke-schumacher" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/luke-schumacher-611468130/" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <p>&copy; 2024 Luke Schumacher. All rights reserved.</p>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Luke Schumacher. All rights reserved. Built with passion for AI and sustainable innovation.</p>
+            </div>
         </div>
     </footer>
 
-    <script id="main.js">
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const pageSwitchers = document.querySelectorAll('.page-switcher');
             const sections = document.querySelectorAll('.page-section');
             const navLinks = document.querySelectorAll('.nav-link');
-            const header = document.getElementById('header');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            // --- Page Navigation Logic ---
             const showSection = (hash) => {
                 const targetId = hash ? hash.substring(1) : 'home';
                 let sectionFound = false;
@@ -336,15 +739,13 @@
                         section.classList.add('hidden');
                     }
                 });
-                
-                // If no section matches (e.g., bad hash), show home
+
                 if (!sectionFound) {
                     document.getElementById('home').classList.remove('hidden');
                 }
 
                 updateActiveLink(targetId);
-                window.scrollTo(0, 0); // Scroll to top on page change
-                // Close mobile menu on navigation
+                window.scrollTo(0, 0);
                 mobileMenu.classList.add('hidden');
             };
 
@@ -362,28 +763,32 @@
                 switcher.addEventListener('click', (e) => {
                     e.preventDefault();
                     const hash = e.currentTarget.hash;
-                    // Update URL hash for history
-                    history.pushState(null, null, hash); 
+                    history.pushState(null, null, hash);
                     showSection(hash);
                 });
             });
-            
-            // Handle browser back/forward buttons
+
             window.addEventListener('popstate', () => {
                 showSection(window.location.hash);
             });
 
-            // Show initial section based on URL hash or default to #home
             showSection(window.location.hash || '#home');
 
-
-            // --- Mobile Menu Toggle ---
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-            
         });
     </script>
+
+    <style>
+        .skill-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: default;
+        }
+    </style>
 </body>
 </html>
-

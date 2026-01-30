@@ -1,0 +1,472 @@
+# Portfolio Enhancement - Project Modals
+
+This file contains detailed modal content for the top 5 projects. Insert before `</main>` closing tag.
+
+---
+
+```html
+<!-- Project Modals -->
+
+<!-- Modal: Customer Digital Twin -->
+<div class="project-modal" id="modal-digital-twin">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div
+                    class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    🏆 ITT Summit Award 2023 - First Place
+                </div>
+                <h2 class="text-3xl font-bold mb-2">Customer Digital Twin</h2>
+                <p class="text-gray-600">Siemens Healthineers \u2022 Ongoing</p>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Technical Architecture</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Implemented a Conditional Variational Autoencoder (CVAE) architecture for generating synthetic
+                        customer profiles in healthcare technology sector. The system uses a dual-encoder design to
+                        capture both demographic and behavioral features, with a latent space dimensionality of 128.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Model:</strong> PyTorch-based CVAE with KL divergence regularization</li>
+                        <li><strong>Input:</strong> 47 features across customer demographics, purchase history, and
+                            engagement metrics</li>
+                        <li><strong>Latent Representation:</strong> 128-dimensional continuous space</li>
+                        <li><strong>Output:</strong> Personalized engagement strategy recommendations</li>
+                        <li><strong>Infrastructure:</strong> Deployed on AWS EC2 with S3 data storage</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Challenges & Constraints</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Data Privacy:</strong> Operated under strict GDPR and HIPAA compliance requirements
+                        </li>
+                        <li><strong>Class Imbalance:</strong> Healthcare customer segments highly skewed toward specific
+                            profiles</li>
+                        <li><strong>Interpretability:</strong> Need to explain model decisions to non-technical
+                            stakeholders</li>
+                        <li><strong>Real-time Performance:</strong> Required <200ms inference time for production
+                                deployment</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Solutions & Trade-offs</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Sampling Strategy:</strong> Implemented SMOTE-based oversampling in latent space rather
+                        than input space, preserving feature correlations while addressing imbalance.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Interpretability:</strong> Added attention mechanism to decoder, generating feature
+                        importance scores for each recommendation. Trade-off: 15% increase in inference time, but
+                        critical for stakeholder buy-in.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Performance Optimization:</strong> Quantized model to INT8 using TensorRT, achieving 3x
+                        speedup with <2% accuracy degradation. </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Team & Role</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Team Size:</strong> 4 engineers + 2 domain experts<br>
+                        <strong>My Role:</strong> Lead ML Engineer - Designed architecture, implemented training
+                        pipeline, optimized for production deployment, and presented findings to executive stakeholders.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Key Learnings</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Technical:</strong> Learned importance of latent space analysis before deployment -
+                            discovered customer clusters not visible in input space</li>
+                        <li><strong>Process:</strong> Early stakeholder involvement critical - weekly demos prevented
+                            late-stage requirement changes</li>
+                        <li><strong>Defense/Production Relevance:</strong> Experience with compliance, interpretability,
+                            and performance optimization directly applicable to mission-critical systems requiring
+                            auditability and real-time response</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Agentic Infra Co-Pilot -->
+<div class="project-modal" id="modal-agentic-infra">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div class="inline-block bg-teal-100 text-teal-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    Master's Thesis - Ongoing
+                </div>
+                <h2 class="text-3xl font-bold mb-2">Agentic Infrastructure Co-Pilot</h2>
+                <p class="text-gray-600">Multi-Agent System for Fault Diagnosis</p>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Technical Architecture</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Distributed multi-agent system (MAS) combining Retrieval-Augmented Generation (RAG) with
+                        Knowledge Graph technology for autonomous infrastructure fault diagnosis. Three specialized
+                        agents collaborate through a coordinator:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Governance Agent (Telekom):</strong> Interprets network intent from policy documents
+                            (PDFs) using semantic search</li>
+                        <li><strong>Hardware Agent (Siemens):</strong> Diagnoses physical equipment faults from
+                            technical manuals (CSV/PDF)</li>
+                        <li><strong>Telemetry Agent (Illigo):</strong> Monitors event logs (JSON) for anomaly detection
+                        </li>
+                        <li><strong>Knowledge Graph:</strong> Neo4j graph database linking devices, errors, procedures,
+                            and events</li>
+                        <li><strong>RAG Pipeline:</strong> ChromaDB vector store + GPT-4 for grounded reasoning</li>
+                        <li><strong>Orchestration:</strong> FastAPI microservices with message queue (RabbitMQ)</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Challenges & Constraints</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Data Heterogeneity:</strong> Integrating 3 distinct data sources with different
+                            formats, schemas, and update frequencies</li>
+                        <li><strong>Agent Coordination:</strong> Preventing conflicting diagnoses while maintaining
+                            agent autonomy</li>
+                        <li><strong>Scalability:</strong> System must handle 10,000+ devices with real-time telemetry
+                            streams</li>
+                        <li><strong>Evaluation:</strong> No ground-truth labels for complex multi-domain faults</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Solutions & Trade-offs</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Data Integration:</strong> Built custom parsers for each source + unified entity
+                        resolution layer. Trade-off: Added latency (avg 200ms) but ensured data consistency.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Agent Coordination:</strong> Implemented voting mechanism with confidence weighting.
+                        Agents propose diagnoses + confidence scores; coordinator aggregates using Dempster-Shafer
+                        theory.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Evaluation Metric:</strong> Introduced "Mean Time to Innocence" (MTTI) - time to
+                        correctly identify fault is NOT in specific domain. Validated against subject matter experts in
+                        simulation.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Team & Role</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Team Size:</strong> Solo thesis project with 3 external advisors<br>
+                        <strong>My Role:</strong> End-to-end system design, implementation, and evaluation
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Key Learnings</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Technical:</strong> RAG retrieval quality is bottleneck - invested 40% of time
+                            optimizing chunking strategy and embedding models</li>
+                        <li><strong>Systems Thinking:</strong> Agent specialization more effective than single
+                            monolithic model - enables parallel processing and domain expertise</li>
+                        <li><strong>Defense Applicability:</strong> Multi-agent architecture directly applicable to
+                            C4ISR systems requiring distributed decision-making under uncertainty</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Prompt Academy -->
+<div class="project-modal" id="modal-prompt-academy">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div
+                    class="inline-block bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    AISS Interdisciplinary Project - Completed
+                </div>
+                <h2 class="text-3xl font-bold mb-2">Prompt Academy</h2>
+                <p class="text-gray-600">Agent-Based Educational Platform</p>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Technical Architecture</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Frontend:</strong> Vanilla JavaScript with HTML5 Canvas for interactive game UI</li>
+                        <li><strong>LLM Integration:</strong> Groq SDK (Llama-3.1-70B-Versatile) for real-time agent
+                            responses</li>
+                        <li><strong>Agent Design:</strong> 5 distinct character agents with unique system prompts and
+                            personalities</li>
+                        <li><strong>State Management:</strong> Client-side game state with localStorage persistence</li>
+                        <li><strong>Deployment:</strong> Static site on Netlify with edge functions for API key
+                            management</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Challenges & Constraints</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Prompt Injection:</strong> Players might try to "break" the agents by revealing
+                            system prompts</li>
+                        <li><strong>Response Variability:</strong> LLM non-determinism could make progression
+                            unpredictable</li>
+                        <li><strong>Latency:</strong> API calls averaging 2-3 seconds impacted game flow</li>
+                        <li><strong>Cost:</strong> Budget constraint of $50/month for educational project</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Solutions & Trade-offs</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Robustness:</strong> Implemented multi-layer prompt defense: system prompt
+                        reinforcement, meta-prompting to detect jailbreak attempts, and fallback responses. Trade-off:
+                        Slightly reduced agent spontaneity but improved reliability.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Response Validation:</strong> Added lightweight classifier to validate agent responses
+                        before display, retry on failures. Reduced progression variance by 60%.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Cost Optimization:</strong> Caching common responses + rate limiting. Kept within budget
+                        while serving 200+ users.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Team & Role</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Team Size:</strong> 3-person student team<br>
+                        <strong>My Role:</strong> Technical Lead - Designed agent architecture, implemented LLM
+                        integration, and built game mechanics
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Key Learnings</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Prompt Engineering:</strong> System prompt clarity more important than length -
+                            concise, directive prompts outperformed verbose ones</li>
+                        <li><strong>User Testing:</strong> Players found creative exploits we never anticipated -
+                            importance of adversarial thinking in AI system design</li>
+                        <li><strong>Defense Relevance:</strong> Experience hardening LLM agents against adversarial
+                            inputs applicable to secure AI assistants and chatbot systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: MRI Scheduling AI -->
+<div class="project-modal" id="modal-mri-scheduling">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    Production System - Siemens Healthineers
+                </div>
+                <h2 class="text-3xl font-bold mb-2">MRI Scheduling AI</h2>
+                <p class="text-gray-600">Transformer-Based Predictive Model</p>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Technical Architecture</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Model:</strong> Custom Transformer architecture with 6 encoder layers</li>
+                        <li><strong>Input Sequence:</strong> Historical machine usage patterns (30-day rolling window)
+                        </li>
+                        <li><strong>Features:</strong> 15 engineered features including time-of-day, day-of-week,
+                            patient priority, procedure type</li>
+                        <li><strong>Output:</strong> Next 7-day usage probability distribution per machine</li>
+                        <li><strong>Framework:</strong> TensorFlow 2.x with Keras API</li>
+                        <li><strong>Deployment:</strong> TF Serving on Kubernetes cluster</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Challenges & Constraints</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Data Quality:</strong> Missing data during maintenance windows, irregular sampling
+                        </li>
+                        <li><strong>Temporal Dependencies:</strong> Multi-scale patterns (hourly, daily, weekly cycles)
+                        </li>
+                        <li><strong>Production Requirements:</strong> Must achieve >85% accuracy to impact operations
+                        </li>
+                        <li><strong>Inference Speed:</strong>
+                            <50ms latency for real-time scheduling decisions</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Solutions & Trade-offs</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Data Imputation:</strong> Implemented time-series specific imputation using linear
+                        interpolation for short gaps, seasonal decomposition for long gaps. Preserved temporal patterns
+                        better than mean-filling.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Multi-Scale Attention:</strong> Added positional encoding with multiple time scales.
+                        Captured both short-term (hourly) and long-term (weekly) patterns. Trade-off: 30% more
+                        parameters but 12% accuracy improvement.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Model Compression:</strong> Applied knowledge distillation to reduce model size by 4x
+                        while maintaining accuracy within 1% of original. Met latency requirements on standard hardware.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Team & Role</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Team Size:</strong> 5-person ML team + 2 domain experts<br>
+                        <strong>My Role:</strong> ML Engineer - Designed transformer architecture, built training
+                        pipeline, conducted ablation studies, and deployed to production
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Key Learnings</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Technical:</strong> Transformers excel at long-range dependencies but need careful
+                            pos positional encoding design for time-series vs NLP</li>
+                        <li><strong>Process:</strong> Close collaboration with radiologists revealed insights (e.g.,
+                            emergency cases) that dramatically improved model</li>
+                        <li><strong>Production Impact:</strong> Achieved 89% accuracy, enabling 15% improvement in
+                            resource utilization - directly applicable to logistics and operations optimization in
+                            defense contexts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: ESG Dashboard -->
+<div class="project-modal" id="modal-esg-dashboard">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div class="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    🏆 Finastra Hack to the Future 2020 - Best Environmental Impact & UX
+                </div>
+                <h2 class="text-3xl font-bold mb-2">ESG Reporting Dashboard</h2>
+                <p class="text-gray-600">Automated Sentiment Analysis Platform</p>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Technical Architecture</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Data Source:</strong> GDELT Global Events Database (50,000+ daily news articles)
+                        </li>
+                        <li><strong>NLP Pipeline:</strong> spaCy for entity recognition + VADER for sentiment scoring
+                        </li>
+                        <li><strong>Graph Embeddings:</strong> Node2Vec on company mention co-occurrence graph</li>
+                        <li><strong>Frontend:</strong> Streamlit interactive dashboard</li>
+                        <li><strong>Network Analysis:</strong> NetworkX for relationship mapping</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Challenges & Constraints</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Scale:</strong> Processing 50,000+ articles daily within hackathon timeline (48
+                            hours)</li>
+                        <li><strong>Noise:</strong> Many irrelevant news mentions, false positives in entity extraction
+                        </li>
+                        <li><strong>Sentiment Accuracy:</strong> Generic sentiment models poor on domain-specific ESG
+                            language</li>
+                        <li><strong>Real-time Updates:</strong> Dashboard needed to reflect latest news</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Solutions & Trade-offs</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Filtering:</strong> Built ESG keyword list (200+ terms) + company whitelist. Reduced
+                        noise by 80%, processed only 10,000 relevant articles daily.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Domain Adaptation:</strong> Fine-tuned VADER lexicon with ESG-specific terms (e.g.,
+                        "emissions," "greenwashing"). Improved sentiment F1 score from 0.62 to 0.78.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Graph Embeddings:</strong> Node2Vec revealed company relationships not explicit in text
+                        (e.g., supply chain partners). Enabled "related companies" feature for competitive analysis.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Team & Role</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Team Size:</strong> 4-person hackathon team<br>
+                        <strong>My Role:</strong> ML Engineer - Built NLP pipeline, implemented graph embeddings,
+                        integrated with Stream lit dashboard
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-600">Key Learnings</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Technical:</strong> Graph-based representations powerful for capturing implicit
+                            relationships in unstructured data</li>
+                        <li><strong>Speed vs Quality:</strong> Hackathon forced pragmatic choices - simple models with
+                            good features beat complex models with poor data</li>
+                        <li><strong>Intelligence Applications:</strong> Experience with large-scale text processing and
+                            relationship extraction applicable to OSINT and information operations analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+---
+
+## Integration Instructions
+
+1. Copy entire HTML block above
+2. Insert before `</main>` closing tag in index.html (around line 741)
+3. Ensure `portfolio-enhancements.css` and `portfolio-enhancements.js` are linked
+4. Test each modal opens/closes correctly
+5. Verify ESC key and overlay click close modals

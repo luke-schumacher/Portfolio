@@ -154,7 +154,6 @@
             opacity: 1;
         }
     </style>
-    <link rel="stylesheet" href="portfolio-enhancements.css">
 </head>
 
 <body class="antialiased">
@@ -256,22 +255,14 @@
                     <h2
                         class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                         Featured Projects</h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">Production AI systems, multi-agent architectures, and applied machine learning</p>
-                    
-                    <!-- Project Filter -->
-                    <div class="flex flex-wrap justify-center gap-3 mt-4">
-                        <button class="filter-btn active px-6 py-2 rounded-full font-semibold transition-all" data-filter="all">All Projects</button>
-                        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="healthcare">Healthcare AI</button>
-                        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="aiSystems">AI Systems / Infrastructure</button>
-                        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="civic">Civic Tech</button>
-                        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="game">Game Development</button>
-                    </div>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">From award-winning applications to cutting-edge
+                        AI research with industry leaders</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                     <!-- ESG Dashboard - AWARD WINNER -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="civic aiSystems">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden relative">
                             <img src="assests/Images/Standard ESG Dash 1.png" alt="ESG Dashboard"
                                 class="w-full h-full object-cover" onload="this.classList.add('loaded')">
@@ -320,7 +311,7 @@
                     </div>
 
                     <!-- Customer Digital Twin - AWARD WINNER -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="healthcare aiSystems">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden relative">
                             <img src="assests/Images/DT_1.png" alt="Digital Twin" class="w-full h-full object-cover"
                                 onload="this.classList.add('loaded')">
@@ -362,7 +353,7 @@
                     </div>
 
                     <!-- Transformer MRI Scheduling -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="healthcare aiSystems">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden">
                             <img src="assests/Images/Transformer_model_cover.png" alt="Transformer Model"
                                 class="w-full h-full object-cover" onload="this.classList.add('loaded')">
@@ -394,7 +385,7 @@
                     </div>
 
                     <!-- Civic AI Debator -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="civic aiSystems">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div
                             class="project-image h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                             <div class="text-white text-center p-6">
@@ -439,7 +430,7 @@
                     </div>
 
                     <!-- AI Behavior Lab -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="civic game">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div
                             class="project-image h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
                             <div class="text-white text-center p-6">
@@ -482,7 +473,7 @@
                     </div>
 
                     <!-- Stock Prediction -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="aiSystems">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden">
                             <img src="assests/Images/DT_5.png" alt="Time Series Models"
                                 class="w-full h-full object-cover" onload="this.classList.add('loaded')">
@@ -507,41 +498,8 @@
                         </div>
                     </div>
 
-                    
-                    <!-- Prompt Academy -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="aiSystems civic game">
-                        <div class="project-image h-48 bg-gray-200 overflow-hidden">
-                            <img src="assests/Images/prompt-academy/assets/level_1_background.png" alt="Prompt Academy" class="w-full h-full object-cover" onload="this.classList.add('loaded')">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm text-indigo-600 font-semibold">AISS Project • Completed</span>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-2">Prompt Academy</h3>
-                            <p class="text-gray-600 mb-4">Interactive learning platform teaching prompt engineering through agent-based game mechanics. Demonstrates systems-level thinking in AI interaction design with progressive difficulty and real-time LLM feedback.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Agent Design</span>
-                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">LLMs</span>
-                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Game Mechanics</span>
-                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Education</span>
-                            </div>
-                            <div class="flex gap-3 mb-4">
-                                <a href="https://ai-academy-game.netlify.app/" target="_blank" class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold">
-                                    Live Demo
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </a>
-                                <a href="https://github.com/luke-schumacher/prompt-academy" target="_blank" class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold">
-                                    GitHub
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
-                                </a>
-                            </div>
-                            <button class="read-more-btn mt-4" data-modal="modal-prompt-academy">
-                                Read More →
-                            </button>
-                        </div>
-                    </div>
-<!-- Civic AI Negotiator -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="civic aiSystems">
+                    <!-- Civic AI Negotiator -->
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div
                             class="project-image h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
                             <div class="text-white text-center p-6">
@@ -575,7 +533,7 @@
                     </div>
 
                     <!-- Weather App -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="aiSystems">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden">
                             <img src="assests/Images/Weather_1.png" alt="Weather App" class="w-full h-full object-cover"
                                 onload="this.classList.add('loaded')">
@@ -602,7 +560,7 @@
                     </div>
 
                     <!-- Agentic Infra Co-Pilot (Thesis) -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="aiSystems">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden">
                             <img src="assests/Images/MAS_Dashaboard.png" alt="MAS Dashboard"
                                 class="w-full h-full object-cover" onload="this.classList.add('loaded')">
@@ -630,7 +588,7 @@
                     </div>
 
                     <!-- Illigo EV Infrastructure Platform -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="aiSystems">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden">
                             <img src="assests/Images/illigo_dashboard.png" alt="Illigo Dashboard"
                                 class="w-full h-full object-cover" onload="this.classList.add('loaded')">
@@ -658,7 +616,7 @@
                     </div>
 
                     <!-- VR Ski Training -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="game">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden">
                             <img src="assests/Images/VR2_StartofPiste.png" alt="VR Ski Training"
                                 class="w-full h-full object-cover" onload="this.classList.add('loaded')">
@@ -683,7 +641,7 @@
                     </div>
 
                     <!-- One Button Puzzle Game -->
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden" data-categories="game">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
                         <div class="project-image h-48 bg-gray-200 overflow-hidden">
                             <img src="assests/Images/Level_design.png" alt="Accessible Game Design"
                                 class="w-full h-full object-cover" onload="this.classList.add('loaded')">
@@ -731,7 +689,7 @@
                         </div>
                         <div class="flex-1 text-lg text-gray-700 space-y-4">
                             <p class="leading-relaxed">
-                                I'm a <strong class="text-purple-600">AI researcher and product
+                                I'm a <strong class="text-purple-600">25-year-old AI researcher and product
                                     developer</strong> passionate about creating intelligent solutions that drive
                                 positive change. Currently based in <strong>Tampere, Finland</strong>, my journey has
                                 taken me across the globe — from Germany and South Korea to the Netherlands, UAE, and
@@ -741,7 +699,7 @@
                                 My work spans <strong class="text-blue-600">award-winning applications</strong> to
                                 <strong class="text-blue-600">corporate AI systems</strong> with Siemens Healthineers,
                                 focusing on healthcare optimization, sustainable technology, and civic engagement
-                                platforms. I focus on building reliable, scalable AI systems that solve real-world problems under operational constraints.
+                                platforms. I believe AI should be accessible, ethical, and beneficial for all.
                             </p>
                             <p class="leading-relaxed">
                                 Whether developing transformer models for medical scheduling, creating civic debate
@@ -796,7 +754,8 @@
                                     </svg>
                                     <div>
                                         <strong class="font-semibold text-gray-900">Languages</strong>
-                                        <p class="text-gray-600">English & German (Fluent)</p>
+                                        <p class="text-gray-600">English & German (Fluent), Arabic & French
+                                            (Intermediate)</p>
                                     </div>
                                 </li>
                             </ul>
@@ -1044,7 +1003,7 @@
                             </div>
                         </div>
 
-                        <form class="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-100" action="https://formspree.io/f/mzdgjlpw" method="POST">
+                        <form class="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-100">
                             <div class="mb-6">
                                 <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
                                 <input type="text" id="name" name="name"
@@ -1072,263 +1031,6 @@
                 </div>
             </div>
         </section>
-    
-<!-- Condensed Project Modals (500 words max each) -->
-
-<!-- Modal: Customer Digital Twin -->
-<div class="project-modal" id="modal-digital-twin">
-    <div class="modal-content">
-        <button class="modal-close">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-
-        <div class="p-8">
-            <div class="mb-6">
-                <div
-                    class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
-                    🏆 ITT Summit Award 2023 - First Place
-                </div>
-                <h2 class="text-3xl font-bold mb-2">Customer Digital Twin</h2>
-                <p class="text-gray-600">Siemens Healthineers • Ongoing</p>
-            </div>
-
-            <div class="space-y-4 text-gray-700 leading-relaxed">
-                <p><strong>Technical Architecture:</strong> Implemented CVAE (Conditional Variational Autoencoder)
-                    generating synthetic customer profiles for healthcare technology sales. PyTorch-based model with
-                    dual encoders capturing 47 features (demographics + behavioral metrics), 128-dimensional latent
-                    space, <200ms inference targeting production deployment on AWS EC2.</p>
-
-                        <p><strong>Core Challenge:</strong> Operated under GDPR/HIPAA compliance while handling severely
-                            imbalanced customer segments. Required real-time predictions with full interpretability for
-                            non-technical stakeholders—critical constraints for healthcare production systems.</p>
-
-                        <p><strong>Solutions & Trade-offs:</strong> Applied SMOTE oversampling in latent space (not
-                            input space) to preserve feature correlations. Added attention mechanism to decoder for
-                            feature importance scoring—15% inference slowdown but essential for stakeholder buy-in.
-                            Quantized model to INT8 via TensorRT achieving 3x speedup with <2% accuracy loss.</p>
-
-                                <p><strong>Team & Impact:</strong> Led ML engineering on 4-person team plus 2 domain
-                                    experts. Designed architecture, implemented training pipeline, optimized for
-                                    deployment. Iterative latent space analysis revealed customer clusters invisible in
-                                    raw data—directly informed strategy.</p>
-
-                                <p><strong>Defense/Aerospace Relevance:</strong> Experience with compliance
-                                    requirements, model interpretability, and performance optimization under constraints
-                                    directly applicable to mission-critical systems requiring auditability, reliability,
-                                    and real-time response. Weekly stakeholder demos prevented late-stage requirement
-                                    drift—lesson in managing complex projects with non-technical decision-makers.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal: Agentic Infra Co-Pilot -->
-<div class="project-modal" id="modal-agentic-infra">
-    <div class="modal-content">
-        <button class="modal-close">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-
-        <div class="p-8">
-            <div class="mb-6">
-                <div class="inline-block bg-teal-100 text-teal-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
-                    Master's Thesis • Ongoing
-                </div>
-                <h2 class="text-3xl font-bold mb-2">Agentic Infrastructure Co-Pilot</h2>
-                <p class="text-gray-600">Multi-Agent System for Fault Diagnosis</p>
-            </div>
-
-            <div class="space-y-4 text-gray-700 leading-relaxed">
-                <p><strong>System Architecture:</strong> Distributed multi-agent system combining RAG
-                    (Retrieval-Augmented Generation) with Neo4j knowledge graphs for autonomous infrastructure fault
-                    diagnosis. Three specialized agents—Governance (Telekom policies), Hardware (Siemens equipment
-                    manuals), Telemetry (Illigo event logs)—coordinate through message queue (RabbitMQ) orchestrated by
-                    FastAPI microservices. RAG pipeline uses ChromaDB + GPT-4 for grounded reasoning.</p>
-
-                <p><strong>Technical Challenges:</strong> Integrated heterogeneous data sources (PDFs, CSV, JSON) with
-                    different update frequencies. Agent coordination critical—preventing conflicting diagnoses while
-                    maintaining autonomy. System must scale to 10,000+ devices with real-time telemetry. No ground-truth
-                    labels for multi-domain faults complicated evaluation.</p>
-
-                <p><strong>Solutions:</strong> Built unified entity resolution layer with custom parsers (added 200ms
-                    latency but ensured consistency). Implemented Dempster-Shafer voting mechanism where agents propose
-                    diagnoses with confidence scores—coordinator aggregates probabilistically. Introduced "Mean Time to
-                    Innocence" (MTTI) metric—time to correctly identify fault is NOT in given domain, validated with
-                    SMEs.</p>
-
-                <p><strong>Key Learning:</strong> RAG retrieval quality is bottleneck—invested 40% of effort optimizing
-                    chunking strategy and embeddings. Agent specialization proved more effective than monolithic models
-                    for complex distributed systems.</p>
-
-                <p><strong>Defense Applicability:</strong> Multi-agent architecture directly maps to C4ISR systems
-                    requiring distributed decision-making under uncertainty. Experience with heterogeneous data fusion
-                    and autonomous coordination relevant to military operations and logistics optimization.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal: Prompt Academy -->
-<div class="project-modal" id="modal-prompt-academy">
-    <div class="modal-content">
-        <button class="modal-close">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-
-        <div class="p-8">
-            <div class="mb-6">
-                <div
-                    class="inline-block bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
-                    AISS Project • Completed
-                </div>
-                <h2 class="text-3xl font-bold mb-2">Prompt Academy</h2>
-                <p class="text-gray-600">Agent-Based Educational Platform</p>
-            </div>
-
-            <div class="space-y-4 text-gray-700 leading-relaxed">
-                <p><strong>Architecture:</strong> Interactive learning platform teaching prompt engineering through game
-                    mechanics. Vanilla JavaScript + HTML5 Canvas frontend integrated with Groq SDK (Llama-3.1-70B). Five
-                    distinct character agents with specialized system prompts and personalities. Client-side state
-                    management with localStorage persistence, deployed on Netlify with edge functions for secure API key
-                    management.</p>
-
-                <p><strong>Core Challenges:</strong> Defending against prompt injection—players attempting to
-                    "jailbreak" agents and reveal system prompts. LLM non-determinism made progression unpredictable.
-                    API latency (2-3 seconds) disrupted game flow. Budget constraint of $50/month for educational
-                    deployment serving 200+ users.</p>
-
-                <p><strong>Robustness Design:</strong> Implemented multi-layer prompt defense: system prompt
-                    reinforcement, meta-prompting for jailbreak detection, and fallback responses. Added lightweight
-                    response classifier validating agent outputs before display—retry on failures reduced variance by
-                    60%. Trade-off: slightly reduced spontaneity but dramatically improved reliability.</p>
-
-                <p><strong>Cost Optimization:</strong> Response caching for common interactions plus rate limiting kept
-                    deployment under budget while maintaining responsiveness.</p>
-
-                <p><strong>Team Role:</strong> Technical lead in 3-person student team. Designed agent architecture,
-                    implemented LLM integration, built game mechanics.</p>
-
-                <p><strong>learnings & Defense Relevance:</strong> Concise, directive prompts outperformed verbose
-                    ones—clarity beats length. User testing revealed creative exploits highlighting importance of
-                    adversarial thinking in AI system design. Experience hardening LLM agents against malicious inputs
-                    applicable to secure chatbots and AI assistants in sensitive environments. System prompt engineering
-                    and defensive design critical for trustworthy autonomous systems.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal: MRI Scheduling AI -->
-<div class="project-modal" id="modal-mri-scheduling">
-    <div class="modal-content">
-        <button class="modal-close">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-
-        <div class="p-8">
-            <div class="mb-6">
-                <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
-                    Production System • Siemens Healthineers
-                </div>
-                <h2 class="text-3xl font-bold mb-2">MRI Scheduling AI</h2>
-                <p class="text-gray-600">Transformer-Based Predictive Model</p>
-            </div>
-
-            <div class="space-y-4 text-gray-700 leading-relaxed">
-                <p><strong>Technical Stack:</strong> Custom Transformer architecture with 6 encoder layers predicting
-                    MRI machine utilization patterns. Processes 30-day rolling window of historical usage with 15
-                    engineered features (time-of-day, weekday, patient priority, procedure type). Outputs 7-day usage
-                    probability distribution per machine. TensorFlow 2.x deployed via TF Serving on Kubernetes with
-                    <50ms inference latency requirement.</p>
-
-                        <p><strong>Data & Performance Constraints:</strong> Missing data during maintenance windows with
-                            irregular sampling created data quality issues. Multi-scale temporal patterns (hourly,
-                            daily, weekly cycles) required careful architecture design. Production threshold: >85%
-                            accuracy to impact operations; real-time scheduling decisions demanded <50ms latency.</p>
-
-                                <p><strong>Solutions:</strong> Implemented time-series specific imputation—linear
-                                    interpolation for short gaps, seasonal decomposition for long gaps preserved
-                                    temporal structure. Added multi-scale positional encoding capturing both short-term
-                                    (hourly) and long-term (weekly) patterns—30% more parameters but 12% accuracy gain.
-                                    Applied knowledge distillation reducing model size 4x while maintaining accuracy
-                                    within 1% of original, meeting latency requirements on standard hardware.</p>
-
-                                <p><strong>Team & Results:</strong> ML engineer on 5-person team with 2 radiologist
-                                    domain experts. Designed architecture, built training pipeline, conducted ablation
-                                    studies, deployed to production. Achieved 89% accuracy enabling 15% improvement in
-                                    resource utilization.</p>
-
-                                <p><strong>Key insight & Defense Impact:</strong> Close collaboration with domain
-                                    experts revealed critical patterns (emergency case handling) that dramatically
-                                    improved model—stakeholder engagement essential. Transformers excel at long-range
-                                    dependencies but require careful positional encoding for time-series vs NLP.
-                                    Experience with logistics optimization and resource scheduling directly applicable
-                                    to defense operations, supply chain management, and mission planning under
-                                    operational constraints.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal: ESG Dashboard -->
-<div class="project-modal" id="modal-esg-dashboard">
-    <div class="modal-content">
-        <button class="modal-close">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-
-        <div class="p-8">
-            <div class="mb-6">
-                <div class="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
-                    🏆 Finastra Hack to the Future 2020 - Best Environmental Impact & UX
-                </div>
-                <h2 class="text-3xl font-bold mb-2">ESG Reporting Dashboard</h2>
-                <p class="text-gray-600">Automated Sentiment Analysis Platform</p>
-            </div>
-
-            <div class="space-y-4 text-gray-700 leading-relaxed">
-                <p><strong>System Overview:</strong> Automated ESG sentiment analysis processing GDELT Global Events
-                    Database (50,000+ daily news articles). NLP pipeline: spaCy entity recognition + VADER sentiment
-                    scoring. Node2Vec graph embeddings on company mention co-occurrence network. Interactive Streamlit
-                    dashboard with NetworkX relationship mapping. Built in 48-hour hackathon achieving dual awards.</p>
-
-                <p><strong>Scale & Noise Challenges:</strong> Processing 50,000+ articles daily within tight timeline.
-                    High noise from irrelevant mentions and entity extraction false positives. Generic sentiment models
-                    performed poorly on domain-specific ESG language ("greenwashing," "emissions"). Dashboard required
-                    real-time updates.</p>
-
-                <p><strong>Pragmatic Solutions:</strong> Built ESG keyword list (200+ terms) + company whitelist
-                    reducing noise 80%—processed 10,000 relevant articles daily. Fine-tuned VADER lexicon with
-                    ESG-specific terms improving sentiment F1 score from 0.62 to 0.78. Node2Vec embeddings revealed
-                    implicit relationships (supply chain partners) enabling "related companies" feature for competitive
-                    analysis.</p>
-
-                <p><strong>Team Role:</strong> ML engineer in 4-person hackathon team. Built NLP pipeline, implemented
-                    graph embeddings, integrated with dashboard.</p>
-
-                <p><strong>Hackathon Lessons:</strong> Time pressure forced pragmatic choices—simple models with strong
-                    features beat complex models with poor data. Graph-based representations powerful for capturing
-                    implicit relationships in unstructured text.</p>
-
-                <p><strong>Intelligence Applications:</strong> Large-scale text processing and automated relationship
-                    extraction directly applicable to OSINT (Open-Source Intelligence), information operations analysis,
-                    and threat assessment. Experience with rapid prototyping under constraints and noisy real-world data
-                    mirrors intelligence analysis workflows where perfect data rarely exists and decisions require
-                    imperfect information synthesis.</p>
-            </div>
-        </div>
-    </div>
-</div>
     </main>
 
     <!-- Footer -->
@@ -1457,7 +1159,6 @@
             cursor: default;
         }
     </style>
-    <script src="portfolio-enhancements.js"></script>
 </body>
 
 </html>

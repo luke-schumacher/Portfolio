@@ -1,0 +1,256 @@
+<!-- Condensed Project Modals (500 words max each) -->
+
+<!-- Modal: Customer Digital Twin -->
+<div class="project-modal" id="modal-digital-twin">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div
+                    class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    🏆 ITT Summit Award 2023 - First Place
+                </div>
+                <h2 class="text-3xl font-bold mb-2">Customer Digital Twin</h2>
+                <p class="text-gray-600">Siemens Healthineers • Ongoing</p>
+            </div>
+
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p><strong>Technical Architecture:</strong> Implemented CVAE (Conditional Variational Autoencoder)
+                    generating synthetic customer profiles for healthcare technology sales. PyTorch-based model with
+                    dual encoders capturing 47 features (demographics + behavioral metrics), 128-dimensional latent
+                    space, <200ms inference targeting production deployment on AWS EC2.</p>
+
+                        <p><strong>Core Challenge:</strong> Operated under GDPR/HIPAA compliance while handling severely
+                            imbalanced customer segments. Required real-time predictions with full interpretability for
+                            non-technical stakeholders—critical constraints for healthcare production systems.</p>
+
+                        <p><strong>Solutions & Trade-offs:</strong> Applied SMOTE oversampling in latent space (not
+                            input space) to preserve feature correlations. Added attention mechanism to decoder for
+                            feature importance scoring—15% inference slowdown but essential for stakeholder buy-in.
+                            Quantized model to INT8 via TensorRT achieving 3x speedup with <2% accuracy loss.</p>
+
+                                <p><strong>Team & Impact:</strong> Led ML engineering on 4-person team plus 2 domain
+                                    experts. Designed architecture, implemented training pipeline, optimized for
+                                    deployment. Iterative latent space analysis revealed customer clusters invisible in
+                                    raw data—directly informed strategy.</p>
+
+                                <p><strong>Defense/Aerospace Relevance:</strong> Experience with compliance
+                                    requirements, model interpretability, and performance optimization under constraints
+                                    directly applicable to mission-critical systems requiring auditability, reliability,
+                                    and real-time response. Weekly stakeholder demos prevented late-stage requirement
+                                    drift—lesson in managing complex projects with non-technical decision-makers.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Agentic Infra Co-Pilot -->
+<div class="project-modal" id="modal-agentic-infra">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div class="inline-block bg-teal-100 text-teal-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    Master's Thesis • Ongoing
+                </div>
+                <h2 class="text-3xl font-bold mb-2">Agentic Infrastructure Co-Pilot</h2>
+                <p class="text-gray-600">Multi-Agent System for Fault Diagnosis</p>
+            </div>
+
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p><strong>System Architecture:</strong> Distributed multi-agent system combining RAG
+                    (Retrieval-Augmented Generation) with Neo4j knowledge graphs for autonomous infrastructure fault
+                    diagnosis. Three specialized agents—Governance (Telekom policies), Hardware (Siemens equipment
+                    manuals), Telemetry (Illigo event logs)—coordinate through message queue (RabbitMQ) orchestrated by
+                    FastAPI microservices. RAG pipeline uses ChromaDB + GPT-4 for grounded reasoning.</p>
+
+                <p><strong>Technical Challenges:</strong> Integrated heterogeneous data sources (PDFs, CSV, JSON) with
+                    different update frequencies. Agent coordination critical—preventing conflicting diagnoses while
+                    maintaining autonomy. System must scale to 10,000+ devices with real-time telemetry. No ground-truth
+                    labels for multi-domain faults complicated evaluation.</p>
+
+                <p><strong>Solutions:</strong> Built unified entity resolution layer with custom parsers (added 200ms
+                    latency but ensured consistency). Implemented Dempster-Shafer voting mechanism where agents propose
+                    diagnoses with confidence scores—coordinator aggregates probabilistically. Introduced "Mean Time to
+                    Innocence" (MTTI) metric—time to correctly identify fault is NOT in given domain, validated with
+                    SMEs.</p>
+
+                <p><strong>Key Learning:</strong> RAG retrieval quality is bottleneck—invested 40% of effort optimizing
+                    chunking strategy and embeddings. Agent specialization proved more effective than monolithic models
+                    for complex distributed systems.</p>
+
+                <p><strong>Defense Applicability:</strong> Multi-agent architecture directly maps to C4ISR systems
+                    requiring distributed decision-making under uncertainty. Experience with heterogeneous data fusion
+                    and autonomous coordination relevant to military operations and logistics optimization.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Prompt Academy -->
+<div class="project-modal" id="modal-prompt-academy">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div
+                    class="inline-block bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    AISS Project • Completed
+                </div>
+                <h2 class="text-3xl font-bold mb-2">Prompt Academy</h2>
+                <p class="text-gray-600">Agent-Based Educational Platform</p>
+            </div>
+
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p><strong>Architecture:</strong> Interactive learning platform teaching prompt engineering through game
+                    mechanics. Vanilla JavaScript + HTML5 Canvas frontend integrated with Groq SDK (Llama-3.1-70B). Five
+                    distinct character agents with specialized system prompts and personalities. Client-side state
+                    management with localStorage persistence, deployed on Netlify with edge functions for secure API key
+                    management.</p>
+
+                <p><strong>Core Challenges:</strong> Defending against prompt injection—players attempting to
+                    "jailbreak" agents and reveal system prompts. LLM non-determinism made progression unpredictable.
+                    API latency (2-3 seconds) disrupted game flow. Budget constraint of $50/month for educational
+                    deployment serving 200+ users.</p>
+
+                <p><strong>Robustness Design:</strong> Implemented multi-layer prompt defense: system prompt
+                    reinforcement, meta-prompting for jailbreak detection, and fallback responses. Added lightweight
+                    response classifier validating agent outputs before display—retry on failures reduced variance by
+                    60%. Trade-off: slightly reduced spontaneity but dramatically improved reliability.</p>
+
+                <p><strong>Cost Optimization:</strong> Response caching for common interactions plus rate limiting kept
+                    deployment under budget while maintaining responsiveness.</p>
+
+                <p><strong>Team Role:</strong> Technical lead in 3-person student team. Designed agent architecture,
+                    implemented LLM integration, built game mechanics.</p>
+
+                <p><strong>learnings & Defense Relevance:</strong> Concise, directive prompts outperformed verbose
+                    ones—clarity beats length. User testing revealed creative exploits highlighting importance of
+                    adversarial thinking in AI system design. Experience hardening LLM agents against malicious inputs
+                    applicable to secure chatbots and AI assistants in sensitive environments. System prompt engineering
+                    and defensive design critical for trustworthy autonomous systems.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: MRI Scheduling AI -->
+<div class="project-modal" id="modal-mri-scheduling">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    Production System • Siemens Healthineers
+                </div>
+                <h2 class="text-3xl font-bold mb-2">MRI Scheduling AI</h2>
+                <p class="text-gray-600">Transformer-Based Predictive Model</p>
+            </div>
+
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p><strong>Technical Stack:</strong> Custom Transformer architecture with 6 encoder layers predicting
+                    MRI machine utilization patterns. Processes 30-day rolling window of historical usage with 15
+                    engineered features (time-of-day, weekday, patient priority, procedure type). Outputs 7-day usage
+                    probability distribution per machine. TensorFlow 2.x deployed via TF Serving on Kubernetes with
+                    <50ms inference latency requirement.</p>
+
+                        <p><strong>Data & Performance Constraints:</strong> Missing data during maintenance windows with
+                            irregular sampling created data quality issues. Multi-scale temporal patterns (hourly,
+                            daily, weekly cycles) required careful architecture design. Production threshold: >85%
+                            accuracy to impact operations; real-time scheduling decisions demanded <50ms latency.</p>
+
+                                <p><strong>Solutions:</strong> Implemented time-series specific imputation—linear
+                                    interpolation for short gaps, seasonal decomposition for long gaps preserved
+                                    temporal structure. Added multi-scale positional encoding capturing both short-term
+                                    (hourly) and long-term (weekly) patterns—30% more parameters but 12% accuracy gain.
+                                    Applied knowledge distillation reducing model size 4x while maintaining accuracy
+                                    within 1% of original, meeting latency requirements on standard hardware.</p>
+
+                                <p><strong>Team & Results:</strong> ML engineer on 5-person team with 2 radiologist
+                                    domain experts. Designed architecture, built training pipeline, conducted ablation
+                                    studies, deployed to production. Achieved 89% accuracy enabling 15% improvement in
+                                    resource utilization.</p>
+
+                                <p><strong>Key insight & Defense Impact:</strong> Close collaboration with domain
+                                    experts revealed critical patterns (emergency case handling) that dramatically
+                                    improved model—stakeholder engagement essential. Transformers excel at long-range
+                                    dependencies but require careful positional encoding for time-series vs NLP.
+                                    Experience with logistics optimization and resource scheduling directly applicable
+                                    to defense operations, supply chain management, and mission planning under
+                                    operational constraints.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: ESG Dashboard -->
+<div class="project-modal" id="modal-esg-dashboard">
+    <div class="modal-content">
+        <button class="modal-close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <div class="mb-6">
+                <div class="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full font-semibold text-sm mb-4">
+                    🏆 Finastra Hack to the Future 2020 - Best Environmental Impact & UX
+                </div>
+                <h2 class="text-3xl font-bold mb-2">ESG Reporting Dashboard</h2>
+                <p class="text-gray-600">Automated Sentiment Analysis Platform</p>
+            </div>
+
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p><strong>System Overview:</strong> Automated ESG sentiment analysis processing GDELT Global Events
+                    Database (50,000+ daily news articles). NLP pipeline: spaCy entity recognition + VADER sentiment
+                    scoring. Node2Vec graph embeddings on company mention co-occurrence network. Interactive Streamlit
+                    dashboard with NetworkX relationship mapping. Built in 48-hour hackathon achieving dual awards.</p>
+
+                <p><strong>Scale & Noise Challenges:</strong> Processing 50,000+ articles daily within tight timeline.
+                    High noise from irrelevant mentions and entity extraction false positives. Generic sentiment models
+                    performed poorly on domain-specific ESG language ("greenwashing," "emissions"). Dashboard required
+                    real-time updates.</p>
+
+                <p><strong>Pragmatic Solutions:</strong> Built ESG keyword list (200+ terms) + company whitelist
+                    reducing noise 80%—processed 10,000 relevant articles daily. Fine-tuned VADER lexicon with
+                    ESG-specific terms improving sentiment F1 score from 0.62 to 0.78. Node2Vec embeddings revealed
+                    implicit relationships (supply chain partners) enabling "related companies" feature for competitive
+                    analysis.</p>
+
+                <p><strong>Team Role:</strong> ML engineer in 4-person hackathon team. Built NLP pipeline, implemented
+                    graph embeddings, integrated with dashboard.</p>
+
+                <p><strong>Hackathon Lessons:</strong> Time pressure forced pragmatic choices—simple models with strong
+                    features beat complex models with poor data. Graph-based representations powerful for capturing
+                    implicit relationships in unstructured text.</p>
+
+                <p><strong>Intelligence Applications:</strong> Large-scale text processing and automated relationship
+                    extraction directly applicable to OSINT (Open-Source Intelligence), information operations analysis,
+                    and threat assessment. Experience with rapid prototyping under constraints and noisy real-world data
+                    mirrors intelligence analysis workflows where perfect data rarely exists and decisions require
+                    imperfect information synthesis.</p>
+            </div>
+        </div>
+    </div>
+</div>

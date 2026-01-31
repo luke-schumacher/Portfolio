@@ -133,37 +133,447 @@
     color: #f9fafb;
 }
 
-/* Dark Mode Toggle Button */
-#dark-mode-toggle {
+/* iOS-Style Theme Toggle */
+.theme-toggle-wrapper {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    cursor: pointer;
+    top: 10px;
+    right: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 6px;
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 4px 10px;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.theme-icon {
+    width: 16px;
+    height: 16px;
     transition: all 0.3s ease;
-    z-index: 999;
 }
 
-#dark-mode-toggle:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+.theme-icon.sun {
+    color: #f59e0b;
 }
 
-#dark-mode-toggle svg {
-    width: 24px;
+.theme-icon.moon {
+    color: #6b7280;
+}
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
     height: 24px;
-    color: white;
+    cursor: pointer;
 }
 
-.dark #dark-mode-toggle {
-    background: rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.2);
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle input:checked + .toggle-slider {
+    background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+}
+
+.theme-toggle input:checked + .toggle-slider:before {
+    transform: translateX(20px);
+    background: #fbbf24;
+}
+
+/* Dark mode wrapper styling */
+.dark .theme-toggle-wrapper {
+    background: rgba(30, 41, 59, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark .theme-icon.sun {
+    color: #6b7280;
+}
+
+.dark .theme-icon.moon {
+    color: #fbbf24;
+}
+
+/* Particle Canvas Background - shows on top of hero, behind other sections */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Header above everything */
+header.glass {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Main content layering */
+main {
+    position: relative;
+}
+
+/* Hero section - sits below particles so they show on top */
+#home.hero-gradient {
+    position: relative;
+    z-index: 1 !important;
+}
+
+/* Other sections - solid backgrounds above particles */
+#work,
+#skills {
+    background: #f9fafb !important;
+    position: relative;
+    z-index: 10;
+}
+
+#about,
+#contact {
+    background: #ffffff !important;
+    position: relative;
+    z-index: 10;
+}
+
+/* Dark Mode - General Body & Background */
+.dark body {
+    background: #0f172a !important;
+}
+
+/* Dark Mode - Header */
+.dark header,
+.dark .glass {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(71, 85, 105, 0.5);
+}
+
+.dark .nav-link {
+    color: #cbd5e1;
+}
+
+.dark .nav-link:hover {
+    color: #a78bfa;
+}
+
+.dark .nav-link.active {
+    color: #a78bfa;
+}
+
+/* Dark Mode - Project Cards */
+.dark .project-card {
+    background: #1e293b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark .project-card h3 {
+    color: #f1f5f9;
+}
+
+.dark .project-card p {
+    color: #94a3b8;
+}
+
+.dark .project-card a {
+    color: #a78bfa;
+}
+
+.dark .project-card a:hover {
+    color: #c4b5fd;
+}
+
+/* Dark Mode - Section Backgrounds */
+.dark #work,
+.dark #skills {
+    background: #0f172a !important;
+}
+
+.dark #about,
+.dark #contact {
+    background: #1e293b !important;
+}
+
+.dark #home.hero-gradient {
+    background: linear-gradient(135deg, rgba(30, 27, 75, 0.85) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+}
+
+/* Dark Mode - About Section */
+.dark .bg-gradient-to-br.from-purple-50,
+.dark .bg-gradient-to-br.from-blue-50 {
+    background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+}
+
+.dark .text-gray-700 {
+    color: #cbd5e1;
+}
+
+.dark .text-gray-600 {
+    color: #94a3b8;
+}
+
+.dark .text-gray-900 {
+    color: #f1f5f9;
+}
+
+/* Dark Mode - Skills Section */
+.dark #skills .bg-white {
+    background: #1e293b;
+}
+
+.dark .skill-badge {
+    background: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+}
+
+/* Dark Mode - Contact Form */
+.dark #contact form {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.dark #contact input,
+.dark #contact textarea {
+    background: #1e293b;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+.dark #contact input:focus,
+.dark #contact textarea:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.dark #contact label {
+    color: #e2e8f0;
+}
+
+/* Footer z-index */
+footer {
+    position: relative;
+    z-index: 10;
+}
+
+/* Dark Mode - Footer */
+.dark footer {
+    background: #0f172a !important;
+}
+
+/* Dark Mode - Award Badge */
+.dark .award-badge {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+/* Dark Mode - Text Gradients */
+.dark .bg-gradient-to-r.from-purple-600.to-blue-600.bg-clip-text {
+    background: linear-gradient(to right, #a78bfa, #818cf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* Dark Mode - Yellow Boxes (Award Highlights) */
+.dark .bg-yellow-50 {
+    background: rgba(251, 191, 36, 0.1);
+}
+
+.dark .border-yellow-400 {
+    border-color: #f59e0b;
+}
+
+.dark .text-yellow-800 {
+    color: #fbbf24;
+}
+
+/* Ongoing Badge Animation */
+.ongoing-badge {
+    animation: subtlePulse 2s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
+    }
+}
+
+/* Testimonials Carousel */
+.testimonials-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 1rem;
+}
+
+.testimonials-carousel {
+    position: relative;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.testimonial {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.5s ease-in-out;
+    padding: 1.5rem;
+}
+
+.testimonial.active {
+    position: relative;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.testimonial blockquote {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #374151;
+    font-style: italic;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 4px solid #667eea;
+    margin-bottom: 1rem;
+}
+
+.testimonial blockquote::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    font-size: 3rem;
+    color: #667eea;
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+.testimonial cite {
+    display: block;
+    font-weight: 600;
+    color: #667eea;
+    font-style: normal;
+}
+
+.testimonial .role {
+    display: block;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d1d5db;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: #667eea;
+    transform: scale(1.2);
+}
+
+.carousel-indicator:hover {
+    background: #9ca3af;
+}
+
+/* Dark Mode - Testimonials */
+.dark .testimonials-section {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.dark .testimonial blockquote {
+    color: #e2e8f0;
+    border-left-color: #a78bfa;
+}
+
+.dark .testimonial blockquote::before {
+    color: #a78bfa;
+}
+
+.dark .testimonial cite {
+    color: #a78bfa;
+}
+
+.dark .testimonial .role {
+    color: #94a3b8;
+}
+
+.dark .carousel-indicator {
+    background: #475569;
+}
+
+.dark .carousel-indicator.active {
+    background: #a78bfa;
+}
+
+/* Modal Image Gallery */
+.modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.modal-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.dark .modal-gallery img {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }

@@ -327,7 +327,7 @@ main {
 }
 
 .dark #home.hero-gradient {
-    background: linear-gradient(135deg, rgba(30, 27, 75, 0.85) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+    background: linear-gradient(135deg, #060d18 0%, #0d1b2a 100%) !important;
 }
 
 /* Dark Mode - About Section */

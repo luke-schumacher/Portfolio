@@ -10,18 +10,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Figtree', sans-serif;
             background: #f8fafc;
             min-height: 100vh;
         }
 
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Syne', sans-serif;
+        }
+
         /* Animated gradient background for hero - semi-transparent for particle visibility */
         .hero-gradient {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(75, 162, 89, 0.85) 100%);
+            background: linear-gradient(135deg, #0d1b2a 0%, #152842 55%, #0f2040 100%);
             position: relative;
             overflow: visible;
         }
@@ -33,7 +37,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(5, 18, 63, 0.85));
+            background: radial-gradient(ellipse at 25% 60%, rgba(99, 102, 241, 0.2) 0%, transparent 55%),
+                        radial-gradient(ellipse at 75% 20%, rgba(14, 165, 233, 0.12) 0%, transparent 45%);
             animation: gradient 15s ease infinite;
             pointer-events: none;
         }
@@ -88,11 +93,16 @@
         /* Skill badge hover effect */
         .skill-badge {
             transition: all 0.2s ease;
+            letter-spacing: 0.015em;
+            font-weight: 500 !important;
+            border: 1px solid transparent;
         }
 
         .skill-badge:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+            border-color: currentColor;
+            opacity: 0.85;
         }
 
         /* Profile image styling */
@@ -212,7 +222,7 @@
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="flex-1 text-white">
                         <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                            <span class="text-sm font-semibold">AI Systems Architect • Software Engineer • Data Engineering</span>
+                            <span class="text-sm font-semibold">ML Engineer • AI Trust & Compliance • Multi-Agent Systems</span>
                         </div>
                         <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                             Building Intelligent Ecosystems:
@@ -220,9 +230,9 @@
                                 class="block bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent pb-2">Where Advanced AI Meets Robust Architecture</span>
                         </h1>
                         <p class="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
-                            Combining <strong>extensive AI research</strong> with <strong>production-grade software engineering</strong>. 
-                            I architect multi-agent systems, robust ML infrastructure, and scalable data solutions for leaders like 
-                            <strong>Siemens Healthineers</strong> and <strong>Deutsche Telekom</strong>.
+                            Combining <strong>advanced AI research</strong> with <strong>production-grade engineering</strong>—
+                            with a focus on responsible deployment and regulatory compliance.
+                            I build multi-agent systems and GDPR-aware data pipelines at <strong>Siemens Healthineers</strong>.
                         </p>
                         <div class="flex flex-wrap gap-4">
                             <a href="#work"
@@ -723,7 +733,7 @@
                         <h2
                             class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                             About Me</h2>
-                        <p class="text-xl text-gray-600">AI/ML Engineer • Systems Architect • Mission-Driven</p>
+                        <p class="text-xl text-gray-600">ML Engineer • AI Trust & Compliance • Mission-Driven</p>
                     </div>
 
                     <div class="flex flex-col md:flex-row gap-12 items-center mb-12">
@@ -739,7 +749,7 @@
                                 My expertise lies at the intersection of <strong class="text-blue-600">Data Engineering and AI</strong>. From designing production-grade data pipelines at <strong>Siemens Healthineers</strong> to architecting multi-agent systems for infrastructure fault diagnosis at <strong>Deutsche Telekom</strong>, I focus on reliability, scalability, and performance.
                             </p>
                             <p class="leading-relaxed">
-                                Whether I am optimizing Transformer models for medical scheduling or engineering cloud-native ML platforms, my goal is always to <strong class="text-purple-600">bridge the gap between advanced research and production-grade software</strong>.
+                                Whether optimizing ML pipelines for medical AI or researching multi-agent system robustness, I care about building systems that are reliable, compliant, and grounded in real-world constraints.
                             </p>
                         </div>
                     </div>
@@ -1027,9 +1037,9 @@
                             <span class="skill-badge bg-red-100 text-red-800">Sustainable Technology</span>
                             <span class="skill-badge bg-red-100 text-red-800">Civic Engagement AI</span>
                             <span class="skill-badge bg-red-100 text-red-800">Time-Series Forecasting</span>
-                            <span class="skill-badge bg-red-100 text-red-800">VR/AR Development</span>
-                            <span class="skill-badge bg-red-100 text-red-800">Accessible Game Design</span>
-                            <span class="skill-badge bg-red-100 text-red-800">Unity 3D</span>
+                            <span class="skill-badge bg-red-100 text-red-800">EU AI Act</span>
+                            <span class="skill-badge bg-red-100 text-red-800">GDPR Compliance</span>
+                            <span class="skill-badge bg-red-100 text-red-800">AI Ethics</span>
                             <span class="skill-badge bg-red-100 text-red-800">ESG Analytics</span>
                         </div>
                     </div>

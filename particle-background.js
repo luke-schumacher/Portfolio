@@ -1,207 +1,178 @@
-// Particle Network Background Animation
-(function() {
+// Deep Space Parallax Star Field
+(function () {
     const canvas = document.getElementById('particle-canvas');
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    let particles = [];
-    let mouseX = 0;
-    let mouseY = 0;
-    let isMouseOnCanvas = false;
 
-    // Configuration
-    const config = {
-        particleCount: 100,
-        particleMinSize: 2,
-        particleMaxSize: 4,
-        connectionDistance: 180,
-        mouseInfluenceRadius: 250,
-        baseSpeed: 0.4,
-        colors: {
-            light: {
-                particles: ['rgba(102, 126, 234, 0.8)', 'rgba(118, 75, 162, 0.8)', 'rgba(99, 102, 241, 0.75)'],
-                connections: 'rgba(102, 126, 234, 0.2)'
-            },
-            dark: {
-                particles: ['rgba(167, 139, 250, 0.9)', 'rgba(129, 140, 248, 0.9)', 'rgba(196, 181, 253, 0.85)'],
-                connections: 'rgba(167, 139, 250, 0.18)'
-            }
-        }
+    // ── Layer definitions ────────────────────────────────────────────────────
+    const LAYERS = [
+        { count: 90, minSize: 0.4, maxSize: 0.8, minOp: 0.12, maxOp: 0.20, parallax: 0.008, twinkle: false },
+        { count: 50, minSize: 0.9, maxSize: 1.5, minOp: 0.18, maxOp: 0.30, parallax: 0.020, twinkle: false },
+        { count: 22, minSize: 1.6, maxSize: 2.6, minOp: 0.28, maxOp: 0.45, parallax: 0.042, twinkle: true  },
+    ];
+
+    // ── State ────────────────────────────────────────────────────────────────
+    let stars = [];          // flat array; each star knows its layer index
+
+    // Mouse parallax — normalized -0.5 → +0.5 of viewport
+    const mouse = { targetX: 0, targetY: 0, easedX: 0, easedY: 0 };
+
+    // Shooting star
+    const shot = {
+        state: 'idle',   // 'idle' | 'active'
+        x: 0, y: 0,
+        vx: 0, vy: 0,
+        timer: nextShotDelay(),
     };
 
-    // Resize canvas to full window
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    // ── Helpers ──────────────────────────────────────────────────────────────
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function nextShotDelay() { return rand(9000, 18000); }
+
+    // ── Star factory ─────────────────────────────────────────────────────────
+    function makeStar(layerIdx) {
+        const l = LAYERS[layerIdx];
+        return {
+            layer:        layerIdx,
+            x:            Math.random() * canvas.width,
+            y:            Math.random() * canvas.height,
+            size:         rand(l.minSize, l.maxSize),
+            baseOpacity:  rand(l.minOp, l.maxOp),
+            twinklePhase: rand(0, Math.PI * 2),
+            twinkleSpeed: rand(0.008, 0.018),
+        };
     }
 
-    // Check if dark mode is active
-    function isDarkMode() {
-        return document.documentElement.classList.contains('dark');
-    }
-
-    // Get current color scheme
-    function getColors() {
-        return isDarkMode() ? config.colors.dark : config.colors.light;
-    }
-
-    // Particle class
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-
-        reset() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * (config.particleMaxSize - config.particleMinSize) + config.particleMinSize;
-            this.speedX = (Math.random() - 0.5) * config.baseSpeed;
-            this.speedY = (Math.random() - 0.5) * config.baseSpeed;
-            this.colorIndex = Math.floor(Math.random() * 3);
-        }
-
-        update() {
-            // Mouse influence
-            if (isMouseOnCanvas) {
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < config.mouseInfluenceRadius) {
-                    const force = (config.mouseInfluenceRadius - distance) / config.mouseInfluenceRadius;
-                    const angle = Math.atan2(dy, dx);
-                    // Gentle attraction to mouse
-                    this.speedX += Math.cos(angle) * force * 0.02;
-                    this.speedY += Math.sin(angle) * force * 0.02;
-                }
-            }
-
-            // Apply velocity with damping
-            this.x += this.speedX;
-            this.y += this.speedY;
-            this.speedX *= 0.99;
-            this.speedY *= 0.99;
-
-            // Ensure minimum speed
-            const speed = Math.sqrt(this.speedX * this.speedX + this.speedY * this.speedY);
-            if (speed < config.baseSpeed * 0.5) {
-                this.speedX += (Math.random() - 0.5) * 0.1;
-                this.speedY += (Math.random() - 0.5) * 0.1;
-            }
-
-            // Wrap around edges
-            if (this.x < -50) this.x = canvas.width + 50;
-            if (this.x > canvas.width + 50) this.x = -50;
-            if (this.y < -50) this.y = canvas.height + 50;
-            if (this.y > canvas.height + 50) this.y = -50;
-        }
-
-        draw() {
-            const colors = getColors();
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = colors.particles[this.colorIndex];
-            ctx.fill();
-        }
-    }
-
-    // Initialize particles
-    function initParticles() {
-        particles = [];
-        const count = Math.min(config.particleCount, Math.floor((canvas.width * canvas.height) / 15000));
-        for (let i = 0; i < count; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    // Draw connections between particles
-    function drawConnections() {
-        const colors = getColors();
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < config.connectionDistance) {
-                    const opacity = 1 - (distance / config.connectionDistance);
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = colors.connections.replace('0.15', (0.15 * opacity).toFixed(2))
-                                                         .replace('0.12', (0.12 * opacity).toFixed(2));
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-            }
-        }
-
-        // Draw connections to mouse
-        if (isMouseOnCanvas) {
-            particles.forEach(particle => {
-                const dx = mouseX - particle.x;
-                const dy = mouseY - particle.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < config.mouseInfluenceRadius) {
-                    const opacity = 1 - (distance / config.mouseInfluenceRadius);
-                    ctx.beginPath();
-                    ctx.moveTo(particle.x, particle.y);
-                    ctx.lineTo(mouseX, mouseY);
-                    ctx.strokeStyle = colors.connections.replace('0.15', (0.25 * opacity).toFixed(2))
-                                                         .replace('0.12', (0.2 * opacity).toFixed(2));
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-            });
-        }
-    }
-
-    // Animation loop
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Update and draw particles
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
+    function initStars() {
+        stars = [];
+        LAYERS.forEach((_, i) => {
+            for (let k = 0; k < LAYERS[i].count; k++) stars.push(makeStar(i));
         });
+    }
 
-        // Draw connections
-        drawConnections();
+    // ── Resize ───────────────────────────────────────────────────────────────
+    function resizeCanvas() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initStars();
+    }
+
+    // ── Shooting star init ───────────────────────────────────────────────────
+    function spawnShot() {
+        const angleDeg = rand(-12, 12);
+        const angleRad = (angleDeg * Math.PI) / 180;
+        const speed    = 1.8;
+        shot.x   = -10;
+        shot.y   = rand(canvas.height * 0.20, canvas.height * 0.80);
+        shot.vx  = Math.cos(angleRad) * speed;
+        shot.vy  = Math.sin(angleRad) * speed;
+        shot.state = 'active';
+    }
+
+    // ── Draw ─────────────────────────────────────────────────────────────────
+    function drawStars() {
+        const ex = mouse.easedX;
+        const ey = mouse.easedY;
+
+        stars.forEach(s => {
+            const l   = LAYERS[s.layer];
+            const ox  = ex * canvas.width  * l.parallax;
+            const oy  = ey * canvas.height * l.parallax;
+            const px  = s.x + ox;
+            const py  = s.y + oy;
+
+            let opacity = s.baseOpacity;
+            if (l.twinkle) {
+                s.twinklePhase += s.twinkleSpeed;
+                opacity = Math.max(0, s.baseOpacity + Math.sin(s.twinklePhase) * 0.10);
+            }
+
+            ctx.beginPath();
+            ctx.arc(px, py, s.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(200, 220, 255, ${opacity.toFixed(3)})`;
+            ctx.fill();
+        });
+    }
+
+    function drawShootingStar() {
+        if (shot.state !== 'active') return;
+
+        // Tail: 80px behind travel direction
+        const tailX = shot.x - (shot.vx / 1.8) * 80;
+        const tailY = shot.y - (shot.vy / 1.8) * 80;
+
+        // Core streak
+        const grad = ctx.createLinearGradient(tailX, tailY, shot.x, shot.y);
+        grad.addColorStop(0, 'rgba(165, 180, 252, 0)');
+        grad.addColorStop(1, 'rgba(165, 180, 252, 0.55)');
+
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(shot.x, shot.y);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth   = 1.2;
+        ctx.stroke();
+
+        // Soft glow halo (second pass, wider + very low opacity)
+        const grad2 = ctx.createLinearGradient(tailX, tailY, shot.x, shot.y);
+        grad2.addColorStop(0, 'rgba(165, 180, 252, 0)');
+        grad2.addColorStop(1, `rgba(165, 180, 252, ${(0.55 * 0.2).toFixed(3)})`);
+
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(shot.x, shot.y);
+        ctx.strokeStyle = grad2;
+        ctx.lineWidth   = 3;
+        ctx.stroke();
+    }
+
+    // ── Animation loop ───────────────────────────────────────────────────────
+    let lastTime = 0;
+
+    function animate(ts) {
+        const dt = ts - lastTime;
+        lastTime = ts;
+
+        // Ease mouse parallax
+        mouse.easedX += (mouse.targetX - mouse.easedX) * 0.055;
+        mouse.easedY += (mouse.targetY - mouse.easedY) * 0.055;
+
+        // Shooting star timer
+        if (shot.state === 'idle') {
+            shot.timer -= dt;
+            if (shot.timer <= 0) spawnShot();
+        } else {
+            shot.x += shot.vx;
+            shot.y += shot.vy;
+            if (shot.x > canvas.width + 100) {
+                shot.state = 'idle';
+                shot.timer = nextShotDelay();
+            }
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawStars();
+        drawShootingStar();
 
         requestAnimationFrame(animate);
     }
 
-    // Event listeners
-    window.addEventListener('resize', () => {
-        resizeCanvas();
-        initParticles();
-    });
+    // ── Event listeners ──────────────────────────────────────────────────────
+    window.addEventListener('resize', resizeCanvas);
 
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        isMouseOnCanvas = true;
+    document.addEventListener('mousemove', e => {
+        mouse.targetX = e.clientX / window.innerWidth  - 0.5;
+        mouse.targetY = e.clientY / window.innerHeight - 0.5;
     });
 
     document.addEventListener('mouseleave', () => {
-        isMouseOnCanvas = false;
+        mouse.targetX = 0;
+        mouse.targetY = 0;
     });
 
-    // Initialize
+    // ── Boot ─────────────────────────────────────────────────────────────────
     resizeCanvas();
-    initParticles();
-    animate();
-
-    // Re-initialize on theme change
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.attributeName === 'class') {
-                // Theme changed, colors will update automatically on next frame
-            }
-        });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
+    requestAnimationFrame(animate);
 })();

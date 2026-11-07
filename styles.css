@@ -1313,7 +1313,8 @@ a.detail:hover .detail__ico { color: var(--accent); border-color: var(--accent-l
   transition: clip-path 1.05s var(--e-out);
   transition-delay: calc(var(--i, 0) * 70ms);
 }
-.js [data-reveal='media'].is-visible { clip-path: inset(0 0 0 0); }
+/* Keyed off the parent card: IntersectionObserver can't see a fully clipped element. */
+.js [data-reveal].is-visible > [data-reveal='media'] { clip-path: inset(0 0 0 0); }
 
 /* Quiet variant for blocks that should settle rather than travel. */
 .js [data-reveal='fade'] { transform: none; }

@@ -621,7 +621,7 @@ h1, h2, h3, h4, h5 {
 
 .hero__layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(0, .85fr);
+  grid-template-columns: minmax(0, 1.75fr) minmax(0, .85fr);
   gap: clamp(28px, 5vw, 72px);
   align-items: center;
 }
@@ -863,6 +863,9 @@ h1, h2, h3, h4, h5 {
 }
 .project__glyph svg { width: 44px; height: 44px; stroke-width: 1.1; opacity: .55; transition: transform var(--t-slow) var(--e-out); }
 .project:hover .project__glyph svg { transform: scale(1.08) rotate(-3deg); }
+.project__glyph--mark { color: var(--ink-2); }
+.project__glyph--mark svg { width: 96px; height: 96px; opacity: 1; }
+.project--feature .project__glyph--mark svg { width: 136px; height: 136px; }
 
 .project__badges {
   position: absolute;

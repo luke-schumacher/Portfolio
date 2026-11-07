@@ -863,9 +863,44 @@ h1, h2, h3, h4, h5 {
 }
 .project__glyph svg { width: 44px; height: 44px; stroke-width: 1.1; opacity: .55; transition: transform var(--t-slow) var(--e-out); }
 .project:hover .project__glyph svg { transform: scale(1.08) rotate(-3deg); }
-.project__glyph--mark { color: var(--ink-2); }
-.project__glyph--mark svg { width: 96px; height: 96px; opacity: 1; }
-.project--feature .project__glyph--mark svg { width: 136px; height: 136px; }
+
+/* RaceIQ architecture diagram: the symbols live in the sprite in index.html. */
+.project__flow {
+  position: absolute;
+  inset: 0;
+  container-type: size;
+  background:
+    radial-gradient(120% 120% at 30% 0%, var(--accent-soft), transparent 60%),
+    var(--surface-2);
+}
+.flow { display: block; width: 100%; height: 100%; }
+.flow--tall { display: none; }
+/* Follow the panel's shape, not the screen: the feature card is tall on desktop, wide on tablets. */
+@container (max-aspect-ratio: 9 / 10) {
+  .project__flow .flow--wide { display: none; }
+  .project__flow .flow--tall { display: block; height: calc(100% - 64px); margin-top: 46px; }
+}
+.flowfig { margin-inline: 0; margin-bottom: 0; }
+.flowfig .flow--full { height: auto; aspect-ratio: 1000 / 410; margin-top: 18px; }
+.flowfig .flow--tall { height: auto; aspect-ratio: 320 / 520; max-width: 400px; margin: 18px auto 0; }
+@media (max-width: 860px) {
+  .flowfig .flow--full { display: none; }
+  .flowfig .flow--tall { display: block; }
+}
+.flow-node { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1; }
+.flow-node--quote { fill: none; stroke: var(--line); }
+.flow-node--key { fill: var(--surface); fill: color-mix(in srgb, var(--accent) 13%, var(--surface)); stroke: var(--accent); stroke-width: 1.5; }
+.flow-group { fill: none; stroke: var(--line); stroke-width: 1; }
+.flow-label, .flow-sub, .flow-quote { text-anchor: middle; dominant-baseline: central; }
+.flow-label { fill: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; letter-spacing: -.01em; }
+.flow-sub { fill: var(--ink-3); font-family: var(--sans); font-size: 13.5px; }
+.flow-quote { fill: var(--ink-2); font-family: var(--serif); font-style: italic; }
+.flow-lane { fill: var(--ink-3); font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; }
+.flow-tag { fill: var(--accent); font-family: var(--mono); font-size: 11.5px; }
+.flow-link { fill: none; stroke: var(--ink-3); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.flow-link--key { stroke: var(--accent); stroke-width: 2; }
+.flow-divider { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 1 6; stroke-linecap: round; }
+/* end RaceIQ architecture diagram */
 
 .project__badges {
   position: absolute;
